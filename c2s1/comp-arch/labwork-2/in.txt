@@ -1,0 +1,41 @@
+push 1
+pop R1
+push 1
+pop R2
+push 1
+pop R3
+push 2
+push R2
+mul
+push R2
+mul
+push 7
+push R1
+mul
+push R3
+mul
+add
+push R1
+push R1
+mul
+push R3
+push 2
+push R2
+mul
+div
+add
+push 3
+add
+push R1
+push 5
+push R3
+mul
+push R3
+mul
+push R3
+mul
+add
+mul
+div
+op16 1234567890
+pop R0
