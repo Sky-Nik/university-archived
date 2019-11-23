@@ -1,0 +1,285 @@
+Загальна задача опуклої оптимізації з обмеженнями має вигляд
+
+\begin{equation}
+	f(x) \xrightarrow[x \in \mathcal{C}]{} \min,
+\end{equation}
+
+де змінна $x \in \RR^n$, а $f$ і $\mathcal{C}$ --- опуклі. Ця проблема може бути записана в ADMM форми \eqref{eq:3.1} наступним чином:
+
+\begin{equation}
+	f(x) + g(z) \xrightarrow[x - z = 0]{} \min,
+\end{equation}
+
+де $g$ --- індикаторна функція множини $\mathcal{C}$. \medskip
+
+Доповнена функція Лагранжа (з масштабованою двоїстою змінною) для цієї задачі має вигляд
+
+\begin{equation}
+	L_\rho(x, z, u) = f(x) + g(z) + (\rho / 2) \cdot \|x - z + u\|_2^2,
+\end{equation}
+
+тому масштабована форма ADMM цієї задач наступна:
+
+\begin{align}
+	x^{k + 1} &\coloneqq \argmin_x \left( f(x) + (\rho / 2) \cdot \left\|x - z^k + u^k\right\|_2^2 \right), \\
+	z^{k + 1} &\coloneqq \Pi_\mathcal{C} \left( x^{k + 1} + u^k \right), \\
+	u^{k + 1} &\coloneqq u^k + x^{k + 1} - z^{k + 1}.
+\end{align}
+
+Крок оновлення змінної $x$ включає мінімізацію суми $f$ і опуклої квадратичної функції, тобто обчислення проксимального оператору пов'язаного з $f$. Крок оновлення змінної $z$ є евклідовою проекцією на $\mathcal{C}$. 
+
+\begin{remark}
+	Цільова функція $f$ не зобов'язана бути гладкою.
+\end{remark}
+
+\begin{example}
+	Можна вводити додаткові обмеження (окрім того що $x \in \mathcal{C}$) шляхом покладання $f(x) = + \infty$ скрізь де ці обмеження не виконуються.
+\end{example}
+
+Як і у всіх інших задачах де обмеження має вигляд $x - z = 0$, пряма і двоїста нев'язки набувають простих форм:
+
+\begin{equation}
+	r^k = x^k - z^k, \quad s^k = - \rho \cdot \left(z^k - z^{k - 1} \right).
+\end{equation}
+
+У подальших розділах ми розглянемо більш конкретні випадки.
+
+\subsection{Опукла допустимість}
+
+\subsubsection{Почергові проекції}
+
+Класичною задачею є знаходження спільної точки двох замкнених непорожніх опуклих множин. Класичним методом розробленим ще у 1930-их є метод почергових проецій фон Неймана \cite{166, 36, 21}:
+
+\begin{align}
+	x^{k + 1} &\coloneqq \Pi_\mathcal{C} \left( z^k \right), \\
+	z^{k + 1} &\coloneqq \Pi_\mathcal{D} \left( x^{k + 1} \right),
+\end{align}
+
+де $\Pi_\mathcal{C}$ і $\Pi_\mathcal{D}$ --- оператори евклідового проектування на множини $\mathcal{C}$ і $\mathcal{D}$ відповідно. \medskip
+
+У формі ADMM ця задача може бути записана так:
+
+\begin{equation}
+	f(x) + g(z) \xrightarrow[x - z = 0]{} \min,
+\end{equation}
+
+де $f$ і $g$ --- індикаторні функції множин $\mathcal{C}$ і $\mathcal{D}$ відповідно. Це дозволяє записати наступну масштабовану форму алгоритму:
+
+\begin{align}
+	x^{k + 1} &\coloneqq \Pi_\mathcal{C} \left( z^k - u^k \right), \\
+	z^{k + 1} &\coloneqq \Pi_\mathcal{D} \left( x^{k + 1} + u^k \right), \\
+	u^{k + 1} &\coloneqq u^k + x^{k + 1} - z^{k + 1},
+\end{align}
+
+де обидва кроки оновлення змінних $x$ та $z$ містять проектування на опуклу множину, як і у класичному алгоритмі.
+
+\begin{remark}
+	Насправді це один в один алгоритм почергових проекцій Дейкстри \cite{56, 9}, який куди більш ефективний ніж класичний метод фон Неймана за рахунок використання двоїстої змінної $u$.
+\end{remark}
+
+\begin{proposition}
+    У цій задачі норма прямої нев'язки $\left\|x^k - z^k\right\|_2$ має наглядну інтерпретацію.
+\end{proposition}
+
+\begin{proof}
+    Оскільки $x^k \in \mathcal{C}$, а $z^k \in \mathcal{D}$, то $\left\|x^k - z^k\right\|_2$ є оцінкою зверху на $\rho \left(\mathcal{C}, \mathcal{D}\right)$, тобто на евклідову відстань між $\mathcal{C}$ та $\mathcal{D}$. \medskip
+    
+    Якщо ми зупиняємося при $\left\|r^k\right\|_2 \le \epsilon^{\text{pri}}$, то це означає, що ми знайшли пару точок, одну в $\mathcal{C}$ а іншу в $\mathcal{D}$  на відстані не більше $\epsilon^{\text{pri}}$ одна від одної. \medskip
+    
+    Тоді точка $(1 / 2) \cdot \left( x^k + z^k \right)$ знаходиться на відстані не більше $\epsilon^{\text{pri}} / 2$ як від $\mathcal{C}$ так і від $\mathcal{D}$.
+\end{proof}
+
+\subsubsection{Код на python}
+
+Класичний метод фон Неймана:
+
+\begin{minted}{python}
+def von_neumann(x_0: np.array, z_0: np.array, proj_c: Callable[[np.array], np.array], 
+        proj_d: Callable[[np.array], np.array], eps: float=1e-5) -> Tuple[np.array, int]:
+    assert x_0.shape == z_0.shape, "x_0 and z_0 should be of the same shape"
+
+    k, x_k, z_k = 0, np.copy(x_0), np.copy(z_0)
+    z_k += np.repeat(eps, x_0.shape)
+
+    while np.linalg.norm(x_k - z_k, 2) >= eps:
+        x_k = proj_c(z_k)
+        z_k = proj_d(x_k)
+        k += 1
+
+    return (x_k + z_k) / 2, k
+\end{minted}
+
+Метод Дейкстри:
+
+\begin{minted}{python}
+def dijkstra(x_0: np.array, z_0: np.array, proj_c: Callable[[np.array], np.array], 
+        proj_d: Callable[[np.array], np.array], eps: float=1e-5) -> Tuple[np.array, int]:
+    assert x_0.shape == z_0.shape, "x_0 and z_0 should be of the same shape"
+
+    k, x_k, z_k = 0, np.copy(x_0), np.copy(z_0)
+    z_k += np.repeat(eps, x_0.shape)
+    u_k = np.repeat(eps, x_0.shape)
+
+    while np.linalg.norm(x_k - z_k, 2) >= eps:
+        x_k = proj_c(z_k - u_k)
+        z_k = proj_d(x_k + u_k)
+        u_k += x_k - z_k
+        k += 1
+
+    return (x_k + z_k) / 2, k
+\end{minted}
+
+\subsubsection{Паралельні проекції}
+
+Цей же метод застосовується до задачі знаходження спільної точки $N$ замкнених опуклих множин $\mathcal{A}_1, \ldots, \mathcal{A}_N$ з $\RR^n$ якщо розглянути задачу наступним чином: ми працюємо у просторі $\RR^{nN}$, де
+
+\begin{equation}
+	\mathcal{C} = \mathcal{A}_1 \times \ldots \times \mathcal{A}_N, \quad
+	\mathcal{D} = \left\{ (x_1, x_2, \ldots, x_N) \in \RR^{nN} \middle| x_1 = x_2 = \ldots = x_N \right\}.
+\end{equation}
+
+\begin{proposition}
+    Проекція на $\mathcal{C}$ виражається через проекції на $\mathcal{A}_1, \ldots, \mathcal{A}_N$. \medskip
+
+    А саме, якщо $x = (x_1, \ldots, x_N) \in \RR^{nN}$, то:
+
+    \begin{equation}
+    	\Pi_\mathcal{C}(x) = \left( \Pi_{\mathcal{A}_1} (x_1), \ldots, 
+    	\Pi_{\mathcal{A}_N} (x_N) \right).
+    \end{equation}
+\end{proposition}
+
+\begin{proposition}
+    У свою чергу, проекція на $\mathcal{D}$ має вигляд
+
+    \begin{equation}
+    	\Pi_\mathcal{D} = \left( \bar x, \bar x, \ldots, \bar x \right),
+    \end{equation}
+    
+    де $\bar x = (1 / N) \sum_{i = 1}^N x_i$ --- середнє точок $x_1, \ldots, x_N$.
+\end{proposition}
+
+Як наслідок, кожний крок ADMM складається з паралельного проектування точок на $\mathcal{A}_1, \ldots, \mathcal{A}_N$ і усереднення результатів:
+
+\begin{align}
+	x_i^{k + 1} &\coloneqq \Pi_{\mathcal{A}_i} \left(z^k - u_i^k\right), \\
+	z^{k + 1} &\coloneqq \frac{1}{N} \sum_{i = 1}^N \left( x_i^{k + 1} + 
+	u_i^k \right), \\
+	u_i^{k + 1} &\coloneqq u_i^k + x_i^{k + 1} - z^{k + 1}.
+\end{align}
+
+Тут перший і третій кроки виконуються паралельно для $i = 1, \ldots, N$.
+
+\begin{remark}
+	Опис вище використовує трохи спрощений запис опускаючи індексі $i$ в $z_i$ оскільки всі $z_i$ однакові.
+\end{remark}
+
+Отриманий алгоритм може трактуватися як особливий випадок оптимізації з обмеженнями описаний у \S4.4, де індикаторна функція множини $\mathcal{A}_1 \cap \ldots \cap \mathcal{A}_N$ розбивається у суму індикаторних функцій усіх $\mathcal{A}_i$. 
+
+\begin{remark}
+	Беручи середнє по $i$ в останньому рівнянні ми отримуємо
+	
+	\begin{equation}
+		\bar u^{k + 1} = \bar u^k + \bar x^{k + 1} = z^k,
+	\end{equation}
+	
+	що у поєднанні з $z^{k + 1} = \bar x^{k + 1} + \bar u^k$ з другого рівняння дає $\bar u^{k + 1} = 0$. \medskip
+	
+	Тобто після першого кроку середнє $u_i$ дорівнює нулю. \medskip
+	
+	Це означає, що $z^{k + 1} = \bar x^{k + 1}$.
+\end{remark}
+
+Використовуючи ці спрощення ми приходимо до наступного простого алгоритму:
+
+\begin{align}
+	x_i^{k + 1} &\coloneqq \Pi_{\mathcal{A}_i}
+	\left( \bar x^k - u_i^k \right), \\
+	u_i^{k + 1} &\coloneqq u_i^k + 
+	\left( x_i^{k + 1} - \bar x^{k + 1} \right).
+\end{align}
+
+Ця форма показує, що $u_i^k$ є сумою відхилень $x_i^k - \bar x^k$ за всі попередні ітерації (у припущенні що $u^0 = 0$). Перший крок цього алгоритму є паралельними проекціями на $\mathcal{A}_i$, а другий включає усереднення отриманих проекцій. \medskip
+
+Існує дуже багато літератури стосовно алгоритмів послідовних проекцій та їхніх застосувань. Див.~\cite{10} для загального огляду, \cite{39} для застосувань в обробці зображень, \cite[\S5]{31} для обговорення у контексті роз-паралеленої оптимізації.
+
+\subsection{Лінійне і квадратичне програмування}
+
+Стандартний вигляд задачі квадратичного програмування наступний:
+
+\begin{equation}
+	\label{eq:standard-quadratic-programming-problem}
+	(1/2) x^\intercal P x + q^\intercal x \xrightarrow[\substack{A x = b \\ x \ge 0}]{} \min,
+\end{equation}
+
+де змінна $x \in \RR^n$, а $P \in S_+^n$. 
+
+\begin{remark}
+	Коли $P = 0$ ця задача перетворюється на стандартну задачу лінійного програмування.
+\end{remark}
+
+Представимо цю задачу у ADMM-вигляді:
+
+\begin{equation}
+	f(x) + g(z) \xrightarrow[x - z = 0]{} \min,
+\end{equation}
+
+де 
+
+\begin{equation}
+	f(x) = (1/2) x^\intercal P x + q^\intercal x,
+\end{equation}
+
+з
+
+\begin{equation}
+	\domain f = \{ x \mid A x = b \}
+\end{equation}
+
+--- початкова цільова функція з початковою допустимою областю, а $g$ --- індикаторна функція невід'ємного ортанту $\RR_+^n$. \medskip
+
+Тоді масштабований вигляд ADMM складається з ітерацій
+
+\begin{align}
+	x^{k + 1} &\coloneqq \Argmin_x \left( f(x) + (\rho / 2) \left\|x - z^k + u^k \right\| \right) \\
+	z^{k + 1} &\coloneqq \left( x^{k + 1} + u^k \right)_+ \\
+	u^{k + 1} &\coloneqq u^k + x^{k + 1} - z^{k + 1}.
+\end{align}
+
+Як описано в \S4.2.5, крок оновлення змінної $x$ є задачею МНК з обмеженням типу рівність, і умови оптимальності цієї задачі мають вигляд
+
+\begin{equation}
+	\begin{pmatrix}
+		P + \rho I & A^\intercal \\
+		A & 0
+	\end{pmatrix}
+	\begin{pmatrix}
+		x^{k + 1} \\
+		b
+	\end{pmatrix}
+	+
+	\begin{pmatrix}
+		q - \rho \left( z^k - u^k \right) \\
+		- b
+	\end{pmatrix}
+	= 
+	0.
+\end{equation}
+
+\begin{remark}
+    Усі зауваження щодо ефективних обчислень зроблені в \S4.2, такі як кешування факторизації для здешевлення подальших ітерацій, можуть бути застосовані і тут. 
+\end{remark}
+
+\begin{example}
+	Якщо $P$ діагональна (можливо нульова), то перший крок оновлення змінної $x$ можна виконати за $O(np^2)$ флопс, де $p$ --- кількість обмежень типу рівність у початкові задачі квадратичного програмування, а наступні кроки --- за $O(np)$ флопс.
+\end{example}
+
+\subsubsection{Лінійне і квадратичне програмування на конусі}
+
+У загальному випадку, можна вводити довільне конічне обмеження $x \in \mathcal{K}$ замість $x \ge 0$, тоді стандартна задача квадратичного програмування \eqref{eq:standard-quadratic-programming-problem} стає задачею квадратичного програмування на конусі. \medskip
+
+Єдиною зміною в ADMM буде крок оновлення змінної $z$, який тепер потребуватиме проектування на $\mathcal{K}$. 
+
+\begin{example}
+	Можна розв'язувати напіввизначену задачу з $x \in S_+^n$ шляхом проектування $x^{k + 1} + u^k$ на $S_+^n$ з використанням спектрального розкладу.
+\end{example}

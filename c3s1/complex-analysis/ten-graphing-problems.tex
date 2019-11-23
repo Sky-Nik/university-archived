@@ -1,0 +1,114 @@
+% pdflatex ten-graphing-problems.tex && del ten-graphing-problems.aux, ten-graphing-problems.out, ten-graphing-problems.log && start ten-graphing-problems.pdf
+\input{univ.sty}
+
+\numberwithin{equation}{section}
+
+\begin{document}
+
+\setcounter{section}{1}
+
+\setcounter{problem}{22}
+
+У задачах 1.23--1.34 необхідно з'ясувати геометричний зміст вказаних співвідношень.
+\begin{problem}
+	$|z - z_0| < R$; $|z - z_0| > R$; $|z - z_0| = R$.
+\end{problem}
+\begin{solution}
+	Внутрішність круга з центром $z_0$ і радіусом $R$, зовнішність цього круга, і коло яке є межею цього круга:
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=.3\linewidth]{fig-4.png}
+		\quad
+		\includegraphics[width=.3\linewidth]{fig-5.png}
+		\quad
+		\includegraphics[width=.3\linewidth]{fig-6.png}
+	\end{figure}
+\end{solution}
+	
+\begin{problem}
+	$|z - 2| + |z + 2| = 5$.
+\end{problem}
+\begin{solution}
+	Еліпс з фокусами $-2$, $2$ і ``радіусом'' 5:
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{fig-7.png}
+	\end{figure}
+\end{solution}
+
+\begin{problem}
+	$|z-2| - |z+2| > 3$.
+\end{problem}
+\begin{solution}
+	Внутрішність ``лівої'' гілки гіперболи з фокусами $-2$, $2$ і ``радіусом'' 3:
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=.85\linewidth]{fig-8.png}
+	\end{figure}
+\end{solution}
+
+\begin{problem}
+	$|z - z_1| = |z - z_2|$.
+\end{problem}
+\begin{solution}
+	Серединний перпендикуляр до відрізку, що сполучає точки $z_1$ і $z_2$:
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=.85\linewidth]{fig-9.png}
+	\end{figure}
+\end{solution}
+
+\begin{problem}
+	$\Real z \ge C$; $\Imag z < C$.
+\end{problem}
+\begin{solution}
+	``Права'' (замкнена, тобто із прямою, що є границею) півплощина відносно прямої $x = C$. \\
+
+	``Нижня'' (відкрита, тобто без прямої, що є границею) півплощина відсносно прямої $y = C$.
+\end{solution}
+
+\begin{problem}
+	$0 < \Real (iz) < 1$.
+\end{problem}
+\begin{solution}
+	$\Real (iz) = \Real (i(x + iy)) = -y$, тому вказаний об'єкт -- (відкрита) горизонтальна смуга $-1 < y < 0$.
+\end{solution}
+
+\begin{problem}
+	$\alpha < \arg z < \beta$; $\alpha < \arg (z - z_0) < \beta$ ($-\pi < \alpha < \beta \le \pi$).
+\end{problem}
+\begin{solution}
+	(Відкритий) кут від $\alpha$ до $\beta$ з центром в $0$ та $z_0$ відповідно.
+\end{solution}
+
+\begin{problem}
+	$|z| = \Real z + 1$.
+\end{problem}
+\begin{solution} % thanks to Olexander Prikhodko
+	Парабола з фокусом 0 і директрисою $x = -1$.
+\end{solution}
+
+\begin{problem}
+	$\Real z + \Imag z < 1$.
+\end{problem}
+\begin{solution} % thanks to Vladyslav Verteletskyi
+	``Ліва нижня'' півплощина відносно прямої $x + y = 1$.
+\end{solution}
+
+\begin{problem}
+	$\Imag \frac{z-z_1}{z-z_2}=0$; $\Real \frac{z-z_1}{z-z_2}=0$;
+\end{problem}
+\begin{solution} % thanks to Olexander Prikhodko
+	$\Imag \frac{z-z_1}{z-z_2}=0 \iff \arg (z - z_1) = \arg (z - z_2)$, тобто $z$ належить прямій, що сполучає точки $z_1$ та $z_2$. \\
+
+	$\Real \frac{z-z_1}{z-z_2}=0 \iff \arg(z-z_1)=\pi/2+\arg(z-z_2)$, тобто відрізки, що сполучають точки $z$ і $z_1$ та $z$ і $z_2$ перпендикулярні, тобто $z$ належить колу, побудованому на відрізку, що сполучає точки $z_1$ і $z_2$, як на діаметрі. 
+\end{solution}
+
+\begin{problem}
+	$|2z| > |1+z^2|$.
+\end{problem}
+\begin{solution}
+	\[|2z| > |1+z^2| \iff \left(|z - i| - \sqrt{2}\right) \cdot \left(|z + i| - \sqrt{2}\right) < 0,\] тому вказана множина є $\mathcal{K}_{\sqrt{2}}(-i) \Delta \mathcal{K}_{\sqrt{2}}(i)$.
+\end{solution}
+
+\end{document}

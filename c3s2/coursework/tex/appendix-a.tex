@@ -1,0 +1,217 @@
+Основний результат щодо збіжності, який згадується у \S3.2 можна знайти у кількох джерелах, як-то \cite{81, 63}. Багато з цих джерел надають також більш складні результати з загальнішими штрафними доданками і неточною мінімізацією. Для повноти наведемо тут доведення основного результату. 
+
+\begin{theorem*}
+    Ми покажемо, що якщо $f$ і $g$ --- замкнуті, власні, і опуклі, а Лагранжіан $L_0$ має сідлову точку, то ми маємо збіжність прямої нев'язки $r^k \to 0$, збіжність цільової функції $p^k \to p^\star$, де $p^k = f \left(x^k\right) + g \left(z^k\right)$. Ми також покажемо збіжність двоїстої нев'язки $s^k = \rho A^\intercal B \left(z^k - z^{k - 1}\right)$ до нуля.
+\end{theorem*}
+
+\begin{proof}
+    Нехай $\left(x^\star, z^\star, y^\star\right)$ --- сідлова точка $L_0$, визначимо тоді
+
+    \begin{equation*}
+        V^k = (1/\rho) \left\| y^k - y^\star \right\|_2^2 + \rho \left\| B \left( z^k - z^\star \right) \right\|_2^2.
+    \end{equation*}
+
+    Покажемо, що $V^k$ є \textit{функцією Ляпунова} нашого алгоритму, тобто вона є невід'ємним числом яке спадає на кожній ітерації.
+
+    \begin{remark}
+        Значення $V^k$ невідоме, оскільки залежить від невідомих значень $z^\star$ і $y^\star$.
+    \end{remark}
+
+    Спершу опишемо головну ідею. Доведення покладається на три ключові нерівності, які ми доведемо нижче з використанням базових результатів опуклого аналізу і простої лінійної алгебри. 
+
+    \begin{lemma*}[перша нерівність]
+        \begin{equation}
+            \label{eq:a1}
+            V^{k + 1} \le V^k - \rho \left\| r^{k + 1} \right\|_2^2 - \rho \left\| B \left( z^{k + 1} - z^k \right) \right\|_2^2.
+        \end{equation}
+    \end{lemma*}
+
+    Вона каже, що $V^k$ зменшується на кожній ітерації на якесь значення, залежне від норм нев'язок, і від зміни $z$ від ітерації до ітерації. Оскільки $V^k \le V^0$, то звідси випливає обмеженість $y^k$ і $B z^k$. \medskip
+
+    Ітерування цієї нерівності дає 
+
+    \begin{equation*}
+        \rho \Sum_{k = 0}^\infty \left( \left\|r^{k + 1}\right\|_2^2 + \left\| B \left( z^{k + 1} - z^k \right) \right\|_2^2 \right) \le V^0,
+    \end{equation*}
+
+    звідки випливає, що $r^k \to 0$ і $B \left( z^{k + 1} - z^k \right) \to 0$ при $k \to \infty$. Множення другого виразу на $\rho A^\intercal$ показує, що двоїста нев'язка $s^k = \rho A^\intercal B \left( z^{k + 1} - z^k \right)$ збігається до нуля.
+
+    \begin{remark}
+        Це показує, що критерій зупинки \eqref{eq:3.12}, який вимагає одночасної малості прямої і двоїстої нев'язок, рано чи пізно таки виконається і алгоритм зупиниться.
+    \end{remark}
+
+    \begin{lemma*}[друга ключова нерівність]
+        \begin{equation}
+            \label{eq:a2}
+            p^{k + 1} - p^\star \le - \left( y^{k + 1} \right)^\intercal r^{k + 1} - \rho \left( B \left( z^{k + 1} - z^k \right) \right)^\intercal \left( -r^{k + 1} + B \left( z^{k + 1} - z^\star \right) \right).
+        \end{equation}
+    \end{lemma*}
+
+    і
+    
+    \begin{lemma*}[третя]
+        \begin{equation}
+            \label{eq:a3}
+            p^\star - p^{k + 1} \le \left( y^\star \right)^\intercal r^{k + 1}.
+        \end{equation}
+    \end{lemma*}
+
+    Права частина \eqref{eq:a2} прямує до нуля при $k \to \infty$ адже $$B \left( z^{k + 1} - z^\star \right)$$ обмежена, і як $r^{k + 1}$ так і $B \left(z^{k + 1} - z^k \right)$ прямують до нуля. Права частина \eqref{eq:a2} прямує до нуля при $k \to \infty$ бо $r^k$ прямує до нуля. Отже маємо $\Lim_{k \to \infty} p^k = p^\star$, тобто цільова функція збігається.
+\end{proof}
+
+Перед доведенням усіх трьох ключових нерівностей виведемо нерівність \eqref{eq:3.11} (з вищезгаданого критерію зупинки) з нерівності \eqref{eq:a2}: просто помітимо, що $-r^{k + 1} + B \left( z^{k + 1} - z^k \right) = - A \left( x^{k + 1} - x^\star \right)$; підстановка цього в \eqref{eq:a2} дає \eqref{eq:3.11}:
+
+\begin{equation*}
+    p^{k + 1} - p^\star \le - \left( y^{k + 1} \right)^\intercal r^{k + 1} + \left( x^{k  1} - x^\star \right)^\intercal s^k.
+\end{equation*}
+
+\subsection*{Доведення нерівності \eqref{eq:a3}}
+
+\begin{proof}
+    Оскільки $\left( x^\star, z^\star, y^\star \right)$ --- сідлова точка $L_0$, то маємо
+
+    \begin{equation*}
+        L_0 \left( x^\star, z^\star, y^\star \right) \le L_0 \left( x^{k + 1}, z^{k + 1}, y^\star \right).
+    \end{equation*}
+
+    Використовуючи $A x^\star + B z^\star = c$, знаходимо, що ліва частина дорівнює $p^\star$. Враховуючи, що $p^{k + 1} = f\left(x^{k + 1}\right) + g\left(z^{k + 1}\right)$, нерівність вище може бути записана у вигляді
+
+    \begin{equation*}
+        p^\star \le p^{k + 1} + \left( y^\star \right)^\intercal r^{k + 1},
+    \end{equation*}
+
+    звідки безпосередньо випливає \eqref{eq:a3}
+\end{proof}
+
+\subsection*{Доведення нерівності \eqref{eq:a2}}
+
+\begin{proof}
+    За визначенням, $x^{k + 1}$ мінімізує $L_\rho \left( x, z^k, y^k \right)$. Оскільки $f$ замкнена, власна, і опукла, то вона субдиференційовна, а тому такою ж є $L_\rho$. Тоді (необхідними і достатніми) умовами оптимальності будуть\footnote{Тут ми скористалися тим, що субдиференціао субдиференційовної і диференційовної функції з областю визначення $\RR^n$ є сумою субдиференціалу і градієнту; див.~\cite[\S23]{140} для доведення.}
+
+    \begin{equation*}
+        0 \in \partial L_\rho \left( x^{k + 1}, z^k, y^k \right) = \partial f \left( x^{k + 1} \right) + A^\intercal y^k + \rho A^\intercal \left( A x^{k + 1} + B z^k - c \right).
+    \end{equation*}
+
+    Оскільки $y^{k + 1} = y^k + \rho r^{k + 1}$, то ми можемо підставити $y^k = y^{k + 1} - \rho r^{k +1 }$ і переставити доданки щоб отримати
+
+    \begin{equation*}
+        0 \in \partial f \left( x^{k + 1} \right) + A^\intercal \left( y^{k + 1} - \rho B \left( z^{k + 1} - z^k \right) \right).
+    \end{equation*}
+
+    Це означає, що $x^{k + 1}$ мінімізує
+
+    \begin{equation*}
+        f(x) + \left( y^{k + 1} - \rho B \left( z^{k + 1} - z^k \right) \right)^\intercal A x.
+    \end{equation*}
+
+    Аналоігчні міркування показують, що $z^{k + 1}$ мінімізує $g(z) + \left( y^{k + 1} \right)^\intercal B z$. Звідси випливає, що
+
+    \begin{equation*}
+        f \left( x^{k + 1} \right) + \left( y^{k + 1} - \rho B \left( z^{k + 1} - z^k \right) \right)^\intercal A x^{k + 1} \le f \left( x^\star \right) + \left( y^{k + 1} - \rho B \left( z^{k + 1} - z^k \right) \right)^\intercal A x^\star,
+    \end{equation*}
+
+    а також що
+
+    \begin{equation*}
+        g \left( z^{k + 1} \right) + \left( y^{k + 1} \right)^\intercal B z^{k + 1} \le g \left( z^\star \right) + \left( y^{k + 1} \right)^\intercal B z^\star.
+    \end{equation*}
+
+    Додаючи дві нерівності вище, використовуючи рівність $A x^\star + B z^\star = c$, і переставляючи доданки, отримуємо \eqref{eq:a2}
+\end{proof}
+
+\subsection*{Доведення нерівності \eqref{eq:a1}}
+
+\begin{proof}
+    Додаючи \eqref{eq:a2} і \eqref{eq:a3}, перегруповуючи доданки, і домножаючи на $2$ отримуємо
+
+    \begin{equation}
+        \label{eq:a4}
+        2 \left( y^{k + 1} - y^\star \right)^\intercal r^{k + 1} - 2 \rho \left( B \left(z^{k + 1} - z^k \right)\right)^\intercal r^{k + 1} + 2 \rho \left( B \left(z^{k + 1} - z^k \right) \right)^\intercal \left( B \left(z^{k + 1} - z^\star \right) \right) \le 0.
+    \end{equation}
+
+    Ми отримємо \eqref{eq:a1} з цієї нерівності після певних маніпуляцій. \medskip
+
+    Почнемо з переписування першого доданку. Робимо заміну $y^{k + 1} = y^k + \rho r^{k + 1}$, отримуємо
+
+    \begin{equation*}
+        2 \left( y^k - y^\star \right)^\intercal r^{k + 1} + \rho \left\| r^{k + 1} \right\|_2^2 + \rho \left\| r^{k + 1} \right\|_2^2,
+    \end{equation*}
+
+    а подальша заміну $r^{k + 1} = (1 / \rho) \left( y^{k + 1} - y^k \right)$ у перших двох доданках дає
+
+    \begin{equation*}
+        (2 / \rho) \left( y^k - y^\star \right)^\intercal \left( y^{k + 1} - y^k \right) + (1 / \rho) \left\| y^{k + 1} - y^k \right\|_2^2 + \rho \left\| r^{k + 1} \right\|_2^2.
+    \end{equation*}
+
+    Оскільки $y^{k + 1} - y^k = \left( y^{k + 1} - y^\star \right) - \left( y^k - y^\star \right)$, то можемо переписати останній вираз у вигляді
+
+    \begin{equation}
+        \label{eq:a5}
+        (1 / \rho) \left( \left\| y^{k + 1} - y^\star \right\|_2^2 - \left\| y^k - y^\star \right\|_2^2 \right) + \rho \left\| r^{k + 1} \right\|_2^2.
+    \end{equation}
+
+    Тепер переписуємо решту доданків:
+
+    \begin{equation*}
+        \rho \left\| r^{k + 1} \right\|_2^2 - 2 \rho \left( B \left( z^{k + 1} - z^k \right) \right)^\intercal r^{k + 1} + 2 \rho \left( B \left( z^{k + 1} - z^\star \right) \right),
+    \end{equation*}
+
+    де $\rho \left\| r^{k + 1} \right\|_2^2$ взяли з \eqref{eq:a5}. Підставляючи
+
+    \begin{equation*}
+        z^{k + 1} - z^\star = \left( z^{k + 1} - z^k \right) + \left( z^k - z^\star \right)
+    \end{equation*}
+
+    у останній доданок отримуємо
+
+    \begin{equation*}
+        \rho \left\| r^{k + 1} - B \left( z^{k + 1} - z^k \right) \right\|_2^2 + \rho \left\| B \left( z^{k + 1} - z^k \right) \right\|_2^2 + 2 \rho \left( B \left( z^{k + 1} - z^k \right) \right)^\intercal \left( B \left( z^k - z^\star \right) \right),
+    \end{equation*}
+
+    а підставляючи
+
+    \begin{equation*}
+        z^{k + 1} - z^k = \left( z^{k + 1} - z^\star \right) - \left( z^k - z^\star \right)
+    \end{equation*}
+
+    у останні два доданки, отримуємо
+
+    \begin{equation*}
+        \rho \left\| r^{k + 1} - B \left( z^{k + 1} - z^k \right) \right\|_2^2 + \rho \left( \left\| B \left( z^{k + 1} - z^\star \right) \right\|_2^2 - \left\| B \left( z^k - z^\star \right) \right\|_2^2 \right).
+    \end{equation*}
+
+    Разом з попереднім кроком це означає, що \eqref{eq:a4} можна записати у вигляді
+
+    \begin{equation}
+        \label{eq:a6}
+        V^k - V^{K + 1} \ge \rho \left\| r^{k + 1} - B \left( z^{k + 1} - z^k \right) \right\|_2^2.
+    \end{equation}
+
+    Щоб довести \eqref{eq:a1} залишилося всього лише показати, що середній доданок 
+    
+    \begin{equation*}
+        - 2 \rho \left(r^{k + 1} \right)^\intercal \left( B \left( z^{k + 1} - z^k \right) \right)
+    \end{equation*}
+    
+    з розгорнутої правої частини \eqref{eq:a6} додатній. \medskip
+
+    Для того щоб показати це, загадаємо, що $z^{k + 1}$ мініммізує $g(z) + \left( y^{k + 1} \right)^\intercal B z$, а $z^k$ мінімізує $g(z) + \left( y^k \right)^\intercal B z$. Додаючи відповідні нерівності, а саме
+
+    \begin{equation*}
+        g \left( z^{k + 1} \right) + \left( y^{k + 1} \right)^\intercal B z^{k + 1} \le g\left( z^k \right) + \left( y^{k + 1} \right)^\intercal B z^k,
+    \end{equation*}
+
+    і
+
+    \begin{equation*}
+        g \left( z^k \right) + \left( y^k \right)^\intercal B z^k \le g\left( z^{k + 1} \right) + \left( y^k \right)^\intercal B z^{k + 1},
+    \end{equation*}
+
+    маємо
+
+    \begin{equation*}
+        \left( y^{k + 1} - y^k \right)^\intercal \left( B \left( z^{k + 1} - z^k \right) \right) \le 0.
+    \end{equation*}
+
+    Підставляючи $y^{k + 1} - y^k = \rho r^{k + 1}$ отримуємо жаданий результат, адже $\rho > 0$.
+\end{proof}

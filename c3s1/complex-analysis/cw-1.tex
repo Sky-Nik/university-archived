@@ -1,0 +1,76 @@
+\setcounter{section}{7}
+
+\section{Модульна контрольна робота за 10/18}
+
+
+\begin{problem}
+    Обчислити $\left(\dfrac{\sqrt{3}}{2} + \dfrac i2 \right)^{1+i}$.
+\end{problem}
+
+\begin{solution}
+    $\left(\dfrac{\sqrt{3}}{2} + \dfrac i2 \right)^{1+i}=\left(e^{i\pi/6}\right)^{1+i} = e^{(i - 1) \pi / 6} = e^{-\pi / 6} \cdot (\cos \pi / 6 + i \sin \pi / 6 ) = e^{-\pi / 6} \cdot \left(\dfrac{\sqrt{3}}{2}+\dfrac{i}{2}\right)$.
+\end{solution}
+
+\begin{problem}
+    Знайти всі значення кореня $\sqrt{2 - 2i\sqrt{3}}$.
+\end{problem}
+
+\begin{solution}
+    Знайдемо спочатку модуль цих коренів:
+    \[ |z_{1,2}| = \sqrt{|2 - 2i\sqrt{3}|} = \sqrt{\sqrt{2^2 +\left(2\sqrt{3}\right)^2}} = \sqrt{\sqrt{4 + 12}} = \sqrt{\sqrt{16}} = \sqrt{4} = 2. \]
+    
+    Тепер знайдемо аргумент одного з них:
+    \[ \arg z_1 = \arg \left(2 - 2i\sqrt{3}\right) / 2 = - \pi / 6.\]
+    
+    Далі вже зрозуміло, що аргументом другого значення кореня буде $- \pi / 6 + \pi = 5 \pi / 6$. \\
+    
+    Остаточно маємо $z_1 = 2 \left(\dfrac{\sqrt{3}}{2} - \dfrac{i}{2}\right) = \sqrt{3} - i$, $z_2 = 2 \left(\dfrac{-\sqrt{3}}{2} + \dfrac{i}{2}\right) = i - \sqrt{3}$.
+\end{solution}
+
+\begin{problem}
+    Зобразити на комплексній площині $\dfrac14<\Real\left(\dfrac1{\overline{z}}\right) + \Imag\left(\dfrac1{\overline{z}}\right)<\dfrac12$.
+\end{problem}
+
+\begin{solution}
+    Нехай $z = x + iy$, тоді $\overline{z} = x - iy$, а $\dfrac{1}{\overline{z}} = \dfrac{x + iy}{x^2 + y^2}$, тому нерівність з умови рівносильна нерівності
+    \[ \dfrac14 < \dfrac{x + y}{x^2 + y^2} < \dfrac12.\]
+    
+    Розглянемо окремо частини цієї нерівності:
+    \[ \dfrac14 < \dfrac{x+y}{x^2+y^2} \Leftrightarrow (x - 2)^2 + (y - 2)^2 < 8,\]
+    тобто шукані точки $z$ лежать всередині кола з центром $2+2i$ і радіусом $2\sqrt{2}$. \\
+    
+    \[ \dfrac{x+y}{x^2+y^2} < \dfrac12 \Leftrightarrow (x - 1)^2 + (y - 1)^2 > 2,\]
+    тобто шукані точки $z$ лежать ззовні кола з центром $1+i$ і радіусом $\sqrt{2}$. \\
+    
+    Перетин описаних множин і є шуканою фігурою.
+\end{solution}
+
+\begin{problem}
+    Знайти границю, якщо вона існує $\Lim_{z\to0}\dfrac{z}{\overline{z}}$.
+\end{problem}
+
+\begin{solution}
+    Нехай $z = r \cdot e^{i\phi}$, тоді $\overline{z} = r \cdot e^{-i\phi}$, тому $\dfrac{z}{\overline{z}} = e^{2i\phi}$, набуває різних значень при прямуванні $z$ до нуля по різним напрямкам, тому вказаної границі не існує.
+\end{solution}
+
+\begin{problem}
+    Відновити аналітичну функцію з уявною частиною $v = \arctan(y/x)$.
+\end{problem}
+
+\begin{solution}
+    Перед тим як шукати спряжену до $v$, переконаємося у тому, що $v$ -- гармонійна. Справді,
+    \begin{align*}
+        \dfrac{\partial^2\arctan(y/x)}{\partial x^2} + \dfrac{\partial^2 \arctan(y/x)}{\partial y^2} &= \dfrac{\partial}{\partial x} \left(-\dfrac {y}{x^2 + y^2}\right) + \dfrac{\partial}{\partial y} \left(\dfrac{x}{x^2+y^2}\right) = \\
+        &= \dfrac{2 x y}{(x^2 + y^2)^2} -\dfrac{2 x y}{(x^2 + y^2)^2} = 0,
+    \end{align*}
+    тобто функція справді гармонійна і є сенс шукати спряжену. \\
+    
+    Спробуємо знайти $u$ у вигляді $u = \displaystyle\int \dfrac{\partial v}{\partial x} \dif y = \int \dfrac{y}{x^2 + y^2}\dif y = \dfrac12 \ln(x^2 + y^2)$. \\
+    
+    Друга умова Коші-Рімана виконується за побудовою функції $u$, перевіримо тепер першу:
+    \[ \dfrac{\partial u}{\partial x} = \dfrac{x}{x^2+y^2} = \dfrac{\partial v}{\partial y}, \]
+    виконується. \\
+    
+    Остаточно, шукана функція має вигляд $f(z) = \dfrac12 \ln(x^2+y^2) + i \arctan(y/x)$.
+    
+\end{solution}

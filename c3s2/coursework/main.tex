@@ -1,0 +1,70 @@
+\documentclass[a4paper, 12pt]{article}
+\input{sty/use.sty}
+\input{sty/th.sty}
+\input{sty/cmd.sty}
+
+\title{Розподілена оптимізація і статистичне навчання за допомогою методу множників, що змінюють напрямок (ADMM)}
+\author{Скибицький Нікіта}
+\date{\today}
+
+\allowdisplaybreaks
+\numberwithin{equation}{section}
+\linespread{1.15}
+
+\begin{document}
+
+\input{tex/title} 
+\newpage
+
+\tableofcontents 
+\newpage
+
+\abstract{\input{tex/00-abstract}}
+\newpage
+
+\section{Вступ}
+\label{section-01}
+\input{tex/01-introduction}
+\newpage
+
+\section{Попередники ADMM}
+\label{section-02}
+\input{tex/02-precursors}
+\newpage
+
+\section{Метод множників що змінюють напрямок}
+\label{section-03}
+\input{tex/03-admm}
+\newpage
+
+\section{Загальні патерни}
+\label{section-04}
+\input{tex/04-patterns}
+\newpage
+
+\section{Опукла оптимізація з обмеженнями}
+\label{section-05}
+\input{tex/05-constrained-convex}
+\newpage
+
+\section{Задачі з \texorpdfstring{$\ell_1$}{l1}-нормою}
+\label{section-06}
+\input{tex/06-ell-1}
+\newpage
+
+\section{Висновки}
+\label{section-12}
+\input{tex/12-conclusions}
+\newpage
+
+\appendix
+\label{appendix-a}
+\section{Доведення збіжності}
+\input{tex/appendix-a}
+\newpage
+
+% \nocite{*}
+\bibliography{main} 
+\bibliographystyle{ieeetr}
+
+\end{document}

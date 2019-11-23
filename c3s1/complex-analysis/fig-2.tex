@@ -1,0 +1,52 @@
+pi=3.141592653689793238462643;
+
+radian := 57.29578;
+
+def cos(expr x) = cosd(x*180/pi) enddef;
+
+def sin(expr x) = sind(x*180/pi) enddef;
+
+def arc(expr px, py, r, b, e) = subpath (b * (4 / pi), e * (4/pi)) of fullcircle xscaled (2 * r) yscaled (2 * r) shifted (px, py) enddef;
+
+vardef atan primary X = angle (1, X) enddef;
+
+
+u:=1cm;
+
+% axes
+drawarrow (-u/2,0)--(2u,0);
+drawarrow (0,-u/2)--(0,2u);
+
+% z
+pair z;
+z:=(u,5u/4);
+draw (0,0)--z;
+label.top(btex $z$ etex, z);
+
+% |z|
+pair mod_z;
+mod_z:=(sqrt(1+5/4*5/4)*u,0);
+% draw (0,0)--mod_z;
+label.bot(btex $|z|$ etex, mod_z);
+
+% 1
+pair one;
+one:=(u,0);
+% draw (0,0)--one;
+label.bot(btex $1$ etex, one);
+
+% 1--z
+draw one--z withcolor red;
+
+% 1..z/|z|
+draw arc(0, 0, u * sqrt(1+5/4*5/4), 0, angle(4, 5) / radian) withcolor green;
+
+% 1..|z|
+draw one--mod_z withcolor green;
+
+% 1
+draw one withpen pencircle scaled 2bp;
+% z
+draw z withpen pencircle scaled 2bp;
+% |z|
+draw mod_z withpen pencircle scaled 2bp;

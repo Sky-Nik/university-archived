@@ -1,0 +1,173 @@
+\setcounter{section}{5}
+
+\section{Домашнє завдання за 10/4}
+
+\begin{problem}[Волковиський, 139]
+    Довести, що для функції $f(z)=\sqrt{|xy|}$ в точці $z = 0$ виконуються умови Коші-Рімана, але похідна не існує.
+\end{problem}
+
+\begin{solution}
+    За \textit{визначенням} частинної похідної, $u_x(0, 0) = \Lim_{h \to 0} \dfrac{u(h, 0) - u(0, 0)}{h} = 0 = v_y(0, 0)$ і аналогічно $u_y = 0 = - v_x$, тобто умови Коші-Рімана виконуються. \\
+    
+    Що ж до диференційовності $f$, то $\Lim_{x \to 0} \dfrac {f(z)}{z}$ не існує, хоча би за напрямком $x = y$: 
+    \[ \dfrac{f(z)}{z} = \dfrac{\sqrt{|x \cdot x|}}{x + ix} = \dfrac{|x|}{x} \dfrac{1}{1 + i}, \]
+    набуває як значення $\dfrac{1}{1 + i}$ так і значення $-\dfrac{1}{1 + i}$ у довільному околі точки $z = 0$.
+\end{solution}
+
+\begin{problem}[Волковиський, 131]
+    Перевірити виконання умов Коші-Рімана для функцій $z^n$, $e^z$, $\cos z$, $\Ln z$ і довести, що 
+    \[ (z^n)' = n z^{n-1}, \quad (e^z)' = e^z, \quad (\cos z)' = - \sin z, \quad (\Ln z)' = \dfrac1z. \]
+\end{problem}
+
+\begin{solution}
+    Перевіримо умови Коші-Рімана для функції $z^n$:
+    \begin{align*}
+        \dfrac{\partial \Real z^n}{\partial x} &= \dfrac{\partial \Real (x + iy)^n}{\partial x} = \dfrac{\partial}{\partial x} (x^n - C_n^2 x^{n - 2} y^2 + C_n^4 x^{n - 4} y^4 - \ldots) = \\
+        \\
+        &= n x^{n - 1} - (n - 2) C_n^2 x^{n - 3} y^2 + (n - 4) C_n^4 x^{n - 5} y^4 - \ldots = \\
+        \\
+        &= n x^{n - 1} - n C_{n - 1}^2 x^{n - 3} y^2 + n C_{n - 1}^4 x^{n - 5} y^4 - \ldots = \\
+        \\
+        &= C_n^1 x^{n - 1} - 3 C_n^3 x^{n - 3} y^2 + 5 C_n^5 x^{n - 5} y^4 - \ldots = \\
+        \\
+        &= \dfrac{\partial}{\partial y} (C_n^1 x^{n - 1} y - C_n^3 x^{n - 3} y^3 + C_n^5 x^{n - 5} y^5 - \ldots) = \dfrac{\partial \Imag (x + iy)^n}{\partial y} = \dfrac{\partial \Imag z^n}{\partial y}. \\
+        \\
+        \dfrac{\partial \Real z^n}{\partial y} &= \dfrac{\partial \Real (x + iy)^n}{\partial y} = \dfrac{\partial}{\partial y} (x^n - C_n^2 x^{n - 2} y^2 + C_n^4 x^{n - 4} y^4 - \ldots) = \\
+        \\
+        &= - 2 C_n^2 x^{n - 2} y + 4 C_n^4 x^{n - 4} y^3 - \ldots = \\
+        \\
+        &= - n C_{n - 1}^1 x^{n - 2} y + n C_{n - 1}^3 x^{n - 4} y^3 - n C_{n - 1}^5 x^{n - 6} y^5 + \ldots = \\
+        \\
+        &= - (n - 1) C_n^1 x^{n - 2} y + (n - 3) C_n^3 x^{n - 4} y^3 - (n - 5) C_n^5 x^{n - 6} y^5 + \ldots = \\
+        \\
+        &= - \dfrac{\partial}{\partial x} (C_n^1 x^{n - 1} y - C_n^3 x^{n - 3} y^3 + C_n^5 x^{n - 5} y^5 - \ldots) = \dfrac{\partial \Imag (x + iy)^n}{\partial x} = \dfrac{\partial \Imag z^n}{\partial y}.
+    \end{align*}
+    
+    Що ж стосується $(z^n)'$, то знайдемо її з визначення: 
+    \[ \Lim_{z \to z_0} \dfrac{z^n - z_0^n}{z - z_0} = \Lim_{h \to 0} \dfrac{(z_0 + h)^n - z_0^n}{h} = \Lim_{h \to 0} \dfrac{z_0^n + n h z_0^{n - 1} + o(h) - z_0^n}{h} = \Lim_{h\to0} \dfrac{n h z_0^{n - 1} + o(h)}{h} = n z_0^n. \]
+    
+    Перевіримо умови Коші-Рімана для функції $e^z$:
+    \begin{align*}
+        \dfrac{\partial \Real e^z}{\partial x} &= \dfrac{\partial}{\partial x}(e^x \cos y) = e^x \cos y = \dfrac{\partial}{\partial y} (e^x \sin y) = \dfrac{\partial \Imag e^z}{\partial y}. \\
+        \\
+        \dfrac{\partial \Real e^z}{\partial y} &= \dfrac{\partial}{\partial y}(e^x \cos y) = - e^x \sin y = - \dfrac{\partial}{\partial x} (e^x \cos y) = - \dfrac{\partial \Imag e^z}{\partial x}.
+    \end{align*}
+    
+    Що ж стосується $(e^z)'$, то знайдемо її з визначення: 
+    \[ \Lim_{z \to z_0} \dfrac{e^z - e^{z_0}}{z - z_0} = \Lim_{h \to 0} \dfrac{e^{z_0} e^h - e^{z_0}}{h} = \Lim_{h \to 0} \dfrac{e^{z_0} (e^h - 1)}{h} = e^{z_0} \Lim_{h \to 0} \dfrac{e^h - 1}{h} = e^{z_0}. \]
+    
+    Зауважимо, що 
+    \[\cos z = \dfrac{e^{-y} (\cos x + i \sin x) - e^{y}(\cos x - i \sin x)}{2}.\]
+    Тепер перевіримо умови Коші-Рімана для функції $\cos z$:
+    \begin{align*}
+        \dfrac{\partial \Real \cos z}{\partial x} &= \dfrac{\partial \Real}{\partial x} \dfrac{e^{-y}(\cos x + i \sin x) - e^{y}(\cos x - i \sin x)}{2} = \dfrac{\partial}{\partial x} \dfrac{e^{-y} \cos x - e^{y} \cos x}{2} = \\
+        \\
+        &= \dfrac{e^{y} \sin x - e^{-y} \sin x}{2} = \\
+        \\
+        &= \dfrac{\partial}{\partial y} \dfrac{e^{y} \sin x + e^{-y} \sin x}{2} = \dfrac{\partial \Imag}{\partial y} \dfrac{e^{-y}(\cos x + i \sin x) - e^{y}(\cos x - i \sin x)}{2} = \dfrac{\partial \Imag \cos z}{\partial y}. \\
+        \\
+        \dfrac{\partial \Real \cos z}{\partial y} &= \dfrac{\partial \Real}{\partial y} \dfrac{e^{-y}(\cos x + i \sin x) - e^{y}(\cos x - i \sin x)}{2} = \dfrac{\partial}{\partial y} \dfrac{e^{-y} \cos x - e^{y} \cos x}{2} = \\
+        \\
+        &= \dfrac{-e^{y} \cos x - e^{-y} \cos x}{2} = \\
+        \\
+        &= - \dfrac{\partial}{\partial x} \dfrac{e^{y} \sin x + e^{-y} \sin x}{2} = - \dfrac{\partial \Imag}{\partial x} \dfrac{e^{-y}(\cos x + i \sin x) - e^{y}(\cos x - i \sin x)}{2} = - \dfrac{\partial \Imag \cos z}{\partial x}.
+    \end{align*}
+    
+    Що ж стосується $(\cos z)'$, то знайдемо її з визначення: 
+    \[ (\cos z)' = \left( \dfrac{e^{iz} + e^{-iz}}{2} \right)^\prime = \dfrac{i e^{iz} - i e^{-iz}}{2} = - \dfrac{e^{iz} - e^{-iz}}{2i} = - \sin z. \]
+
+    Перевіримо умови Коші-Рімана для функції $\Ln z$:
+    \begin{align*}
+        \dfrac{\partial \Real \Ln z}{\partial x} &= \dfrac{\partial \Real}{\partial x} \left(\ln \sqrt{x^2 + y^2} + i \arctan \dfrac yx\right) = \dfrac{\partial}{\partial x} \ln \sqrt{x^2 + y^2} = \\
+        \\
+        &= \dfrac{x}{\sqrt{x^2 + y^2}} = \\
+        \\
+        &= \dfrac{\partial}{\partial y} \arctan \dfrac yx = \dfrac{\partial \Imag}{\partial y} \left(\ln \sqrt{x^2 + y^2} + i \arctan \dfrac y x\right) = \dfrac{\partial \Imag \Ln z}{\partial y}. \\
+        \\
+        \dfrac{\partial \Real \Ln z}{\partial y} &= \dfrac{\partial \Real}{\partial y} \left(\ln \sqrt{x^2 + y^2} + i \arctan \dfrac yx\right) = \dfrac{\partial}{\partial x} \ln \sqrt{x^2 + y^2} = \\
+        \\
+        &= \dfrac{y}{\sqrt{x^2 + y^2}} = \\
+        \\
+        &= - \dfrac{\partial}{\partial x} \arctan \dfrac yx = - \dfrac{\partial \Imag}{\partial y} \left(\ln \sqrt{x^2 + y^2} + i \arctan \dfrac yx\right) = - \dfrac{\partial \Imag \Ln z}{\partial y}.
+    \end{align*}
+
+    Що ж стосується $(\Ln z)'$, то знайдемо її за теоремою про похідну оберненої функції:
+    \[ (\Ln z)' = \dfrac{1}{e^{\Ln z}} = \dfrac{1}{z}. \]
+\end{solution}
+
+\begin{problem}[Волковиський, 134]
+    $f(z) = u + iv = \rho e^{i\theta}$ -- аналітична функція. Довести, що якщо одна з функції $u$, $v$, $\rho$, $\theta$ стала, то і функція $f$ стала.
+\end{problem}
+
+\begin{solution}
+    Оскільки функція $f$ аналітична, то для неї виконуються умови Коші-Рімана, тобто 
+    \[ \dfrac{\partial u}{\partial x} = \dfrac{\partial v}{\partial y} \qquad \dfrac{\partial u}{\partial y} = - \dfrac{\partial v}{\partial x}. \]
+    Але якщо одна з функцій $u$, $v$ стала, то її частинні похідні нулі, звідки випливає що частинні похідні другої функції також нулі, тобто сама вона константа, отже і $f$ константа як сума констант. \\
+
+    Оскільки функція $f$ аналітична, то для неї виконуються полярні умови Коші-Рімана, тобто 
+    \[ \dfrac{\partial \rho}{\partial x} = \rho \dfrac{\partial \theta}{\partial y} \qquad \dfrac{\partial \rho}{\partial y} = - \rho \dfrac{\partial \theta}{\partial x}. \]
+    Але якщо одна з функцій $\rho$, $\theta$ стала то її частинні похідні нулі, звідки випливає що або $\rho \equiv 0$ (тоді $f \equiv 0$), або частинні похідні другої функції також нулі, тобто сама вона константа, отже і $f$ константа як сума констант. \\    
+\end{solution}
+
+\begin{problem}[Волковиський, 135]
+    Нехай $z = r e^{i \phi}$ і $f(z) = u(r, \phi) + i v(r, \phi)$. Записати рівняння Коші-Рімана в полярних координатах.
+\end{problem}
+
+\begin{solution}
+    Почнемо з того, що 
+    \begin{align*}
+        \dfrac {\partial u}{\partial r} &= \dfrac {\partial u}{\partial x} \dfrac {\partial x}{\partial r} + \dfrac {\partial u}{\partial y} \dfrac {\partial y}{\partial r} = \dfrac {\partial u}{\partial x} \cos \phi + \dfrac {\partial u}{\partial y} \sin \phi. \\
+        \\
+        \dfrac {\partial v}{\partial r} &= \dfrac {\partial v}{\partial x} \dfrac {\partial x}{\partial r} + \dfrac {\partial v}{\partial y} \dfrac {\partial y}{\partial r} = \dfrac {\partial v}{\partial x} \cos \phi + \dfrac {\partial v}{\partial y} \sin \phi. \\
+        \\
+        \dfrac {\partial u}{\partial \phi} &= \dfrac {\partial u}{\partial x} \dfrac {\partial x}{\partial \phi} + \dfrac {\partial u}{\partial y} \dfrac {\partial y}{\partial \phi} = \dfrac {\partial u}{\partial x} r \cos \phi - \dfrac {\partial u}{\partial y} r \sin \phi. \\
+        \\
+        \dfrac {\partial v}{\partial \phi} &= \dfrac {\partial v}{\partial x} \dfrac {\partial x}{\partial \phi} + \dfrac {\partial v}{\partial y} \dfrac {\partial y}{\partial \phi} = \dfrac {\partial v}{\partial x} r \cos \phi - \dfrac {\partial v}{\partial y} r \sin \phi.
+    \end{align*}
+    Далі веселіше: оскільки $\partial u / \partial x = \partial v / \partial y$, то
+    \begin{align*}
+        \dfrac {\partial u}{\partial r} &= \dfrac {\partial u}{\partial x} \cos \phi + \dfrac {\partial u}{\partial y} \sin \phi = \dfrac {\partial v}{\partial y} \cos \phi + \dfrac {\partial u}{\partial y} \sin \phi. \\
+        \\
+        \dfrac {\partial v}{\partial r} &= \dfrac {\partial v}{\partial x} \cos \phi + \dfrac {\partial v}{\partial y} \sin \phi = \dfrac {\partial v}{\partial x} \cos \phi + \dfrac {\partial u}{\partial x} \sin \phi.
+    \end{align*}
+    Остаточно, оскільки $\partial u / \partial y = - \partial v / \partial x$, то
+    \begin{align*}
+        \dfrac {\partial u}{\partial r} &= \dfrac {\partial v}{\partial y} \cos \phi + \dfrac {\partial u}{\partial y} \sin \phi = \dfrac {\partial v}{\partial y} \cos \phi - \dfrac {\partial v}{\partial x} \sin \phi = \dfrac 1r \dfrac {\partial v}{\partial \phi}. \\
+        \\
+        \dfrac {\partial v}{\partial r} &= \dfrac {\partial v}{\partial x} \cos \phi + \dfrac {\partial u}{\partial x} \sin \phi = - \dfrac {\partial u}{\partial y} \cos \phi + \dfrac {\partial u}{\partial x} \sin \phi = \dfrac 1r \dfrac {\partial u}{\partial \phi}.
+    \end{align*}
+    Таким чином, умови Коші-Рімана набувають вигляду 
+    \[ \dfrac{\partial u}{\partial r} = \dfrac 1r \dfrac{\partial v}{\partial \phi} \qquad \dfrac{\partial u}{\partial r} = - \dfrac 1r \dfrac{\partial v}{\partial \phi}. \]
+\end{solution}
+
+\begin{problem}[Волковиський, 143]
+    Нехай $w = f(z) = u + i v$ і $u(x, y)$, $v(x, y)$ диференційовні в точці $z$. Довести, що множина всеможливих граничних значень відношення $\Delta w / \Delta z$ при $\Delta z \to 0$ є або точкою або колом.
+\end{problem}
+
+\begin{solution}
+    Диференційовність дійсних функцій $u(x, y)$ і $v(x, y)$ двох змінних $x$ і $y$ означає існування граничних значень $u'$ і $v'$ відношень $\Delta u / \|\Delta z\|$ і $\Delta v / \|\Delta z\|$ при $\Delta z \to 0$. \\
+    
+    Це у свою чергу означає, що $\Delta u / \Delta z$ і $\Delta v / \Delta z$ можуть набувати довільних значень виглядів $u' e^{i \phi}$ і $v' e^{i \phi}$ відповідно. Зауважимо, що це відбувається так би мовити \textit{синхронно}, за рахунок вибору аргументу $z$ при зафіксованому модулю. \\
+    
+    А вже звідси безпосередньо випливає, що $\Delta w / \Delta z = \Delta u / \Delta z + i \Delta v / \Delta z$ набуває значень вигляду $u' e^{i \phi} + i v' e^{i \phi}$, тобто належить колу $\|w'\| = \sqrt{(u')^2 + (v')^2}$.
+\end{solution}
+
+\begin{problem}[Волковиський, 140]
+    Довести наступні твердження:
+    \begin{enumerate}
+        \item якщо у функції $w = f(z)$ в точці $z$ існує границя 
+        \[ \Lim_{\Delta z \to 0} \Real \dfrac{\Delta w}{\Delta z}, \]
+        то частинні похідні $u_x$ і $v_y$ існують і рівні;
+        \item якщо у функції $w = f(z)$ в точці $z$ існує границя 
+        \[ \Lim_{\Delta z \to 0} \Imag \dfrac{\Delta w}{\Delta z}, \]
+        то частинні похідні $u_y$ і $v_x$ існують і протилежні;
+        \item якщо $u$ і $v$ диференційовні, то існування будь-якої з границь з пунктів 1), 2) тягне за собою існування другої і диференційовність функції $f(z)$.
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+        \item[1, 2.] Твердження задачі отримується якщо розглянути два шляхи прямування $\Delta z \to 0$: $\Delta z = \Delta x$, $\Delta y = 0$ і $\Delta z = \Delta y$, $\Delta x = 0$. 
+        \item[3.] І що тут робити ??
+    \end{enumerate}
+\end{solution}

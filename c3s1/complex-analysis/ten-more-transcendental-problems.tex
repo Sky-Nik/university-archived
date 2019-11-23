@@ -1,0 +1,148 @@
+% pdflatex ten-more-transcendental-problems.tex && del ten-more-transcendental-problems.aux, ten-more-transcendental-problems.out, ten-more-transcendental-problems.log && start ten-more-transcendental-problems.pdf
+
+\input{univ.sty}
+
+\numberwithin{equation}{section}
+
+\begin{document}
+
+\setcounter{section}{1}
+
+\setcounter{problem}{73}
+\begin{problem}
+	Знайти усі значення наступних степенів:
+	\begin{multicols}{4}
+	\begin{enumerate}
+		\item $1^{\sqrt{2}}$;
+		\item $(-2)^{\sqrt{2}}$;
+		\item $2^i$;
+		\item $1^{-i}$;
+		\item $i^i$;
+		\item $\left( \frac{1-i}{\sqrt{2}} \right)^{1+i}$;
+		\item $(3 - 4i)^{1+i}$;
+		\item $(-3+\nobreak4i)^{1+i}$.
+	\end{enumerate}
+	\end{multicols}
+\end{problem}
+\begin{solution}
+	У всіх пунктах цієї задачі використовується визначення степеню через $\exp$:
+	\begin{equation}
+		\label{eq:1.4.1}
+		a^\alpha = \exp\{\alpha \Ln a\} = e^{\alpha \Ln a}.
+	\end{equation}
+	\begin{enumerate}
+		\item \[ 1^{\sqrt{2}} = e^{\sqrt{2} \Ln 1} = e^{\sqrt{2} (2 \pi i k)} = \cos \left(2\pi k\sqrt{2}\right) + i \sin \left(2\pi k\sqrt{2}\right), \quad k \in \mathbb{Z}.\]
+		\item \begin{multline*} 
+			(-2)^{\sqrt{2}} = e^{\sqrt{2} \Ln (-2)} = e^{\sqrt{2} (\ln 2 + i \pi + 2 \pi i k)} = \\
+			= 2^{\sqrt{2}} \cdot \left(\cos \left(\sqrt{2}\pi (2k+1)\right) + i \sin \left(\sqrt{2} \pi (2k+1)\right)\right), \quad k \in \mathbb{Z}.
+		\end{multline*}
+		\item \begin{multline*} 
+			2^i = e^{i \Ln 2} = e^{i (\ln 2 + 2\pi i k)} = e^{-2 \pi k + i \ln 2} = \\
+			= e^{-2 \pi k} \cdot \left( \cos (\ln 2) + i \sin (\ln 2) \right), \quad k \in \mathbb{Z}.
+		\end{multline*}
+		\item \[ 1^{-i} = e^{-i \Ln 1} = e^{-i (2 \pi i k)} = e^{2 \pi k}, \quad k \in \mathbb{Z}.\]
+		\item \begin{multline*} 
+			i^i = e^{i \Ln i} = e^{i (\pi / 2 + 2 \pi i k)} = e^{- 2 \pi k + i \pi / 2} = \\
+			= e^{-2 \pi k} \cdot (\cos (\pi / 2) + i \sin (\pi / 2)) = i e^{-2 \pi k}, \quad k \in \mathbb{Z}.
+		\end{multline*}
+		\item \begin{multline*}
+			\left( \frac{1-i}{\sqrt{2}} \right)^{1+i} = \exp\left\{ (1 + i) \cdot \Ln\left( \frac{1 - i}{\sqrt{2}} \right) \right\} = \\
+			= \exp\left\{ (1 + i) \cdot \left( - \frac{i \pi}{4} + 2 \pi i k \right) \right\} =  \exp\left\{ \frac\pi4 - 2 \pi k - \frac{i \pi}4 + 2 \pi i k \right\} = \\
+			= e^{\pi/4 - 2 \pi k} \cdot \left(\cos\left(\frac\pi4 + 2 \pi k\right) + i \sin \left(\frac\pi4 + 2 \pi k\right)\right) = \\
+			= i e^{\pi / 4 - 2 \pi k}, \quad k \in \mathbb{Z}.
+		\end{multline*}
+		\item \begin{multline*}
+			(3 - 4i)^{1+i} = e^{(1+i)\cdot\Ln(3-4i)} = e^{(1+i)\cdot(\ln5+\arctan_2(-4,3)+2\pi i k)} = \\
+			= e^{\ln5+\arctan_2(-4,3)-2\pi k+2\pi i k + i\ln5+i\arctan_2(-4,3)} = \\
+			= \left( \cos\left(\ln5+\arctan_2(-4,3)\right)+i\sin\left(\ln5+\arctan_2(-4,3)\right) \right) \cdot \\
+			\cdot 5 e^{\arctan_2(-4,3)-2\pi k}, \quad k \in \mathbb{Z}.
+		\end{multline*}
+		\item \begin{multline*}
+			(-3 + 4i)^{1+i} = e^{(1+i)\cdot\Ln(-3+4i)} = e^{(1+i)\cdot(\ln5+\arctan_2(4,-3)+2\pi i k)} = \\
+			= e^{\ln5+\arctan_2(4,-3)-2\pi k+2\pi i k + i\ln5+i\arctan_2(4,-3)} = \\
+			= \left( \cos\left(\ln5+\arctan_2(4,-3)\right)+i\sin\left(\ln5+\arctan_2(4,-3)\right) \right) \cdot \\
+			\cdot 5 e^{\arctan_2(4,-3)-2\pi k}, \quad k \in \mathbb{Z}.
+		\end{multline*}
+	\end{enumerate}
+\end{solution}
+
+\setcounter{problem}{80}
+\begin{problem}
+	Знайти всі значення наступних функцій:
+	\begin{multicols}{3}
+	\begin{enumerate}
+		\item $\Arcsin \frac 12$;
+		\item $\Arccos \frac 12$;
+		\item $\Arccos 2$;
+		\item $\Arcsin i$;
+		\item $\Arctan (1 + 2i)$;
+		\item $\Arccosh 2i$;
+		\item $\Arctanh (1 - i)$;
+	\end{enumerate}
+	\end{multicols}
+\end{problem}
+\begin{solution}
+	У кожному пункті цієї задачі використовується визначення $\Arccos$ та інших обернених тригонометричних і гіперболічних функцій через прямі, а саме:
+	\begin{equation}
+		\label{eq:1.4.2}
+		\Arccos z = w \xLeftrightarrow{\text{def}} z = \cos w,
+	\end{equation}
+	та подібні.
+	\begin{enumerate}
+		\item \begin{align*}
+			\Arcsin \frac 12 &= z, \\
+			\frac 12 &= \sin z, \\
+			\frac 12 &= \frac{e^{iz}-e^{-iz}}{2i}, \\
+			i &= e^{iz}-e^{-iz}, \\
+			i &= e^{i(x+iy)}-e^{-i(x+iy)}, \\
+			i &= e^{-y+ix}-e^{y-ix}, \\
+			i &= e^{-y} (\cos x + i \sin x) - e^y (\cos x - i \sin x), \\
+			i &= (e^{-y} - e^y) \cos x + i (e^{-y} + e^y) \sin x.
+		\end{align*}
+		Звідси $(e^{-y} - e^y) \cos x = 0$ і $(e^{-y} + e^y) \sin x = 1$. \\
+
+		Розв'язуючи цю систему, знаходимо $y = 0$, $x = 2 \pi k \pm \pi / 6$, $k\in\mathbb{Z}$, тобто остаточно маємо $z = 2 \pi k \pm \pi / 6$.
+		\item \begin{align*}
+			\Arccos \frac 12 &= z, \\
+			\frac 12 &= \cos z, \\
+			\frac 12 &= \frac{e^{iz}+e^{-iz}}{2}, \\
+			1 &= e^{iz}+e^{-iz}, \\
+			1 &= e^{i(x+iy)}+e^{-i(x+iy)}, \\
+			1 &= e^{-y+ix}+e^{y-ix}, \\
+			1 &= e^{-y} (\cos x + i \sin x) + e^y (\cos x - i \sin x), \\
+			1 &= (e^{-y} + e^y) \cos x + i (e^{-y} - e^y) \sin x.
+		\end{align*}
+		Звідси $(e^{-y} + e^y) \cos x = 1$ і $(e^{-y} - e^y) \sin x = 0$. \\
+
+		Розв'язуючи цю систему, знаходимо $y = 0$, $x = 2 \pi k \pm \pi / 3$, $k\in\mathbb{Z}$, тобто остаточно маємо $z = 2 \pi k \pm \pi / 3$.
+		\item 
+		\item 
+		\item 
+		\item 
+		\item 
+	\end{enumerate}
+\end{solution}
+
+\begin{problem}
+	Знайти всі корені наступних рівнянь:
+	\begin{enumerate}
+		\item 
+		\item 
+		\item 
+		\item 
+		\item 
+		\item 
+	\end{enumerate}
+\end{problem}
+\begin{solution}
+	\begin{enumerate}
+		\item 
+		\item 
+		\item 
+		\item 
+		\item 
+		\item 
+	\end{enumerate}
+\end{solution}
+
+\end{document}

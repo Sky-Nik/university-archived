@@ -1,0 +1,130 @@
+\setcounter{section}{4}
+
+\section{Домашнє завдання за 9/27}
+
+\begin{problem}[Евграфов, 2.9.4]
+    З'ясувати за яких значеннях комплексного параметра $a$ збігається послідовність $\left\{\dfrac{a^n}{1+a^n}\right\}_{n=1}^\infty$.
+\end{problem}
+
+\begin{solution}
+    Покажемо, що послідовність збігається при $\|a\|\ne1$ або $a = 1$. Справді, при $\|a\|>1$ маємо 
+    \[ \left\| \dfrac {a ^ n} {1 + a^n} - 1 \right\| = \left\| \dfrac {1} {1+a^n} \right\| \underset{n \to \infty}{\to} \left\| \dfrac {1} {1 + \infty} \right\| = 0. \]
+    З іншого боку, при $\|a\|<1$ маємо 
+    \[ \left\| \dfrac {a ^ n} {1 + a ^ n} - 0 \right\| \xrightarrow[n \to \infty]{} \left\| \dfrac {0} {1 + 0} - 0 \right\| = 0. \]
+    Тобто в обох випадках послідовність збігається. \\
+    
+    Якщо ж $\|a\|=1$ і $\pi\arg(a)\notin\QQ$, то за лемою Кронекера, 
+    \[ \forall \epsilon > 0 \, \exists n_1(\epsilon): \left\|a^{n_1(\epsilon)} - (-1)\right\| < \epsilon \Rightarrow \left\{\dfrac{a^{n_1(1 / k)}}{1 + a^{n_1(1 / k)}}\right\} \xrightarrow[k \to \infty]{} +\infty.\]
+    З іншого боку, за тією ж лемою Кронекера, 
+    \[ \forall \epsilon > 0 \, \exists n_2(\epsilon): \left\|a^{n_2(\epsilon)} - 1\right\| < \epsilon \Rightarrow \left\{\dfrac{a^{n_2(1 / k)}}{1 + a^{n_2(1 / k)}}\right\} \xrightarrow[k \to \infty]{} \dfrac12,\]
+    тобто загалом послідовність розбіжна. \\
+    
+    Якщо ж $\|a\|=1$ і $\pi\arg(a)\in\QQ$ але $a\ne1$ то отримаємо розбіжну періодичну послідовність періоду $> 1$. \\
+    
+    Нарешті, при $a = 1$ маємо збіжну стаціонарну послідовність $1 / 2$.
+\end{solution}
+
+\begin{problem}[Евграфов, 2.14.2]
+    Доведіть, що послідовність \[\left\{\dfrac{1}{2n+1}(2n + 1-(2n-1)z^2 + (2n-3)z^4 - \ldots + (-1)^n z^{2n}))\right\}_{n=0}^\infty\] збігається якщо $\|z\|\leq 1$, $z\ne\pm i$ і знайдіть її границю.
+\end{problem}
+
+\begin{solution}
+    Помітимо, що 
+    \[ Z_{n + 1} = 1 - \dfrac{2n + 1}{2n + 3} \cdot z^2 \cdot Z_n. \]
+    Звідси отримуємо, що 
+    \[ Z_n \xrightarrow[n \to \infty]{} Z: Z = 1 - z^2 \cdot Z \Rightarrow Z = \dfrac{1}{1 + z^2}. \]
+\end{solution}
+
+\begin{problem}[Евграфов, 2.20]
+    Доведіть абсолютну збіжність наступних рядів:
+    \begin{enumerate}
+        \item[3.] $\Sum_{n=1}^\infty \left( \dfrac{(2n - 1)!}{(n!)^3} \cdot \dfrac{z^n}{1 + z^n} \right)$, $\|z\| \le \dfrac 14$.
+        \item[8.] $\Sum_{n=1}^\infty \left( \dfrac{2^n n!}{(z + 1)(z + 3) \ldots(z + 2n + 1)} \right)$, $\Real z > \dfrac 12$.
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+        \item[3.] За формулою Стірлінга, 
+        \begin{align*}
+            \dfrac{(2n - 1)!}{(n!)^3} < \dfrac{(2n)!}{(n!)^3} &\sim \dfrac{\sqrt{2\pi \cdot 2n}\left(\dfrac{2n}{e}\right)^{2n}}{\left(\sqrt{2\pi n}\left(\dfrac{n}{e}\right)^{n}\right)^3} \sim n^{-1} \cdot \dfrac{\exp\{2n \cdot(\ln2 + \ln n) - 2n\}}{\exp\{3n \cdot \ln n - 3n\}} \sim \\
+            &\sim n^{-1} \cdot \exp\{-n \ln n + n \cdot (2 \ln 2 + 1) \} \sim n^{-n},
+        \end{align*} 
+        збігається до нуля швидше ніж $\left\{n^{-1}\right\}_{n=1}^\infty$, отже ряд збіжний при $\dfrac{z^n}{1+z^n} < O(1)$, зокрема при $\|z\| < 1 / 4$.
+        \item[8.] Взагалі-то це не правда, взяти хоча б $z = 1$, отримаємо $\{ (2(n+1))^{-1} \}_{n=1}^\infty$, розбіжний ряд.
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}[Волковиський, 126]
+    Функції $\dfrac{\Real{z}}{z}$, $\dfrac{z}{\|z\|}$, $\dfrac{\Real(z^2)}{\|z\|^2}$, $\dfrac{z\Real{z}}{\|z\|}$ визначені для $z \ne 0$. Які з них можуть бути довизначені в точці $z = 0$ так, щоб вони стали неперервними в цій точні?
+\end{problem}
+
+\begin{solution}
+    Запишемо $z = r e^{i \phi}$, тоді $\Real{z} = r \cos \phi$, тому 
+    \[ \dfrac{\Real{z}}{z} = \dfrac{r \cos \phi}{r e^{i \phi}} = F(\phi),\]
+    набуває різних значень в залежності від $\phi$, тому не існує $\Lim_{z \to 0} \dfrac{\Real{z}}{z}$. \\
+
+    Запишемо $z = r e^{i \phi}$, тоді $\|z\| = r$, тому 
+    \[ \dfrac{z}{\|z\|} = \dfrac{r e^{i \phi}}{r} = F(\phi),\]
+    набуває різних значень в залежності від $\phi$, тому не існує $\Lim_{z \to 0} \dfrac{z}{\|z\|}$. \\
+
+    Запишемо $z = r e^{i \phi}$, тоді $z^2 = r^2 e^{2 i \phi}$, $\Real(z^2) = r^2 \cos (2 \phi)$, $\|z\| = r$, $\|z\|^2 = r^2$, тому 
+    \[ \dfrac{\Real(z^2)}{\|z\|^2} = \dfrac{r^2 \cos (2 \phi)}{r^2} = \cos (2 \phi),\]
+    набуває різних значень в залежності від $\phi$, тому не існує $\Lim_{z \to 0} \dfrac{\Real(z^2)}{\|z\|^2}$. \\
+
+    Запишемо $z = r e^{i \phi}$, тоді $\Real{z} = r \cos \phi$, $\|z\| = r$, тому 
+    \[ \dfrac{z\Real{z}}{\|z\|} = \dfrac{r e^{i \phi} \cdot r \cos \phi}{r} = r \cdot F(\phi), \]
+    де $F = O(1)$, тому $\Lim_{z \to 0} \dfrac{z\Real{z}}{\|z\|} = \Lim_{r \to 0} r \cdot F(\phi) = 0$, отже ця функція може бути довизначена у точці $z = 0$ так, щоб стати неперервною в цій точці.
+\end{solution}
+
+\begin{problem}[Волковиський, 127]
+    Чи будуть функції $(1 - z)^{-1}$ і $(1 + z^2)^{-1}$ неперервними всередині одиничного кола ($\|z\| < 1$)? Чи будуть вони рівномірно неперервними?
+\end{problem}
+
+\begin{solution}
+    Обидві функції будуть неперервними як частка неперервних в області, що не містить нулів знаменника, але не будуть рівномірно неперервними в цій області адже її замикання (або границя, що те саме якщо врахувати першу частину цього речення) містить нулі знаменника, а саме точку $z = 1$ для першої функції і точки $z = \pm i$ для другої функції.
+\end{solution}
+
+\begin{problem}[Волковиський, 128]
+    \begin{enumerate}
+        \item Довести, що функція $e^{-1 / \|z\|}$ рівномірно неперервна в крузі $\|z\| \le R$ з виколотою точкою $z = 0$.
+
+        \item Чи буде рівномірно неперервною в цій же області функція $e^{-1 / z^2}$?
+
+        \item Чи буде функція $e^{-1 / z^2}$ рівномірно неперервною в секторі $0 < \|z\| \le R$, $|\arg z| \le \pi / 6$?
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+        \item Зауважимо, що це рівносильно рівномірній неперервності функції $e^{-1 / x}$ на півінтервалі $(0, R]$, а це в свою чергу рівносильно рівномірній неперервності функції $e^x$ на промені $(- \infty, - 1 / R]$, а це відомо з математичного аналізу.
+
+        \item Розглянемо $z = it$ ($t \in \RR$), тоді $e^{-1 / z^2} = e^{1 / t^2} \xrightarrow[t \to 0]{} e^{\infty} = \infty$. В свою чергу, при $z = t$ ($t \in \RR$) маємо $e^{-1 / z^2} = e^{-1 / t^2} \xrightarrow[t \to 0]{} e^{-\infty} = 0$. Звідси безпосередньо маємо протиріччя з рівномірною неперервністю.
+        
+        \item Нехай $z = r e^{i \phi}$, тоді $z^2 = r^2 e^{2 i \phi}$, $-1 / z^2 = - r^{-2} e^{-2 i \phi}$, $e^{-1 / z^2} = e^{- r^{-2} e^{-2 i \phi}} = 
+        \left(e^{e^{-2 i \phi}}\right)^{-r^{-2}}$. При $r \to 0$ маємо $r^{-2} \to \infty$, $- r^{-2} \to - \infty$, тобто 
+        \[ \Lim_{z \to 0} e^{-1 / z^2} = {e^{e^{-2 i \phi}}}^{-\infty} = \begin{cases} 0, & \left\|e^{e^{-2 i \phi}}\right\| > 1, \\ \\ ??, & \left\|e^{e^{-2 i \phi}}\right\| = 1, \\ \\ \infty, & \left\|{e^{e^{-2 i \phi}}}\right\| < 1. \end{cases}\] 
+        При $|\phi| \le \pi / 6$ маємо $\left\|e^{e^{-2 i \phi}}\right\| > \left\|e^{e^{-2 i \pi / 6}}\right\| > \left\|e^{e^{-i \pi / 2}}\right\| = 1$, тому $\Lim_{z \to 0} e^{-1/z^2} = 0$. \\
+        
+        Ну а неперервність цієї функції в довільній іншій точці замикання сектору очевидна.
+    \end{enumerate}    
+\end{solution}
+
+\begin{problem}[Волковиський, 129]
+    Функція $\omega = e^{-1 / z}$ визначена всюди окрім точки $z = 0$. Довести, що:
+    \begin{enumerate}
+        \item у півкрузі $0 < \|z\| \le 1$, $|\arg z| \le \pi / 2$ ця функція обмежена але не неперервна;
+        \item у цьому ж півкрузі ця функція неперервна але не рівномірно;
+        \item у півкрузі $0 < \|z\| \le 1$, $|\arg z| \le \alpha < \pi /2$ ця функція рівномірно неперервна.;
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+        \item Нехай $z = r e^{i \phi}$, тоді $-1 / z = - r^{-1} e^{-i \phi}$, а далі
+        \[ \Lim_{z \to 0} e^{-1/z} = \Lim_{r \to 0} e^{- r^{-1} e^{-i \phi}} = \Lim_{r \to 0} \left(e^{e^{-i \phi}}\right)^{-r^{-1}} = \left(e^{e^{-i \phi}}\right)^{-\infty} = \begin{cases} 0, & \left\|e^{e^{-i \phi}}\right\| > 1, \\ \\ ??, & \left\|e^{e^{-i \phi}}\right\| = 1, \\ \\ \infty, & \left\|e^{e^{-i \phi}}\right\| < 1. \end{cases}\]
+        Далі, враховуючи що $|\phi| < \pi / 2$, знаходимо $\left\|e^{e^{-i \phi}}\right\| > 1$, але в $\phi = \pm \pi / 2$ маємо $\left\|e^{e^{-i \phi}}\right\| = 1$, тобто значення отримане таким чином невизначене, але не перевищує $1$ за модулем, тому функція обмежена.
+        \item Функція обмежена і є неперервною за теоремами про арифметичні дії з неперервними функціями. Рівномірно неперервною вона не є через те, що на уявній вісі вона поводить себе десь як $\sin (1 /t)$, хіба що по двом координатам одразу.
+        \item Див. доведення задачі 128.3, вона цілком аналогічна.
+    \end{enumerate}
+\end{solution}

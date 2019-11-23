@@ -1,0 +1,70 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english, ukrainian]{babel}
+
+\usepackage{amsmath, amssymb}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{float}
+
+\usepackage{amsthm}
+\newtheorem{theorem}{Теорема}[subsection]
+\newtheorem*{theorem*}{Теорема}
+\newtheorem{lemma}{Лема}[subsection]
+\newtheorem*{lemma*}{Лема}
+\theoremstyle{definition}
+\newtheorem*{remark*}{Зауваження}
+\newtheorem*{example}{Приклад}
+
+\newcommand{\Max}{\max\limits}
+\newcommand{\Sum}{\sum\limits}
+\newcommand{\Int}{\int\limits}
+\newcommand{\Lim}{\lim\limits}
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}}
+
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\Imag}{Im}
+
+\DeclareMathOperator{\Ln}{Ln}
+
+\DeclareMathOperator{\Arg}{Arg}
+
+\DeclareMathOperator{\Arctan}{Arctan}
+\DeclareMathOperator{\Arcsin}{Arcsin}
+\DeclareMathOperator{\Arccos}{Arccos}
+\DeclareMathOperator{\Arccosh}{Arccosh}
+\DeclareMathOperator{\Arctanh}{Arctanh}
+
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\arccoth}{arccoth}
+
+\newcommand{\varLimsup}{\varlimsup\limits}
+
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+
+\allowdisplaybreaks
+\setlength\parindent{0pt}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{unicode=true,colorlinks=true,linktoc=all,linkcolor=red}
+
+\numberwithin{equation}{section}% reset equation counter for sections
+\numberwithin{equation}{subsection}
+% Omit `.0` in equation numbers for non-existent subsections.
+\renewcommand*{\theequation}{%
+  \ifnum\value{subsection}=0 %
+    \thesection
+  \else
+    \thesubsection
+  \fi
+  .\arabic{equation}%
+}

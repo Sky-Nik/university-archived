@@ -1,0 +1,96 @@
+% cd ..\..\Users\NikitaSkybytskyi\Desktop\control-theory
+% cls && pdflatex ControlTheoryAlgorithms.tex && cls && pdflatex ControlTheoryAlgorithms.tex && start ControlTheoryAlgorithms.pdf
+
+\documentclass[a5paper, 10pt]{article}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, ukrainian]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage[top = 2 cm, left = 1 cm, right = 1 cm, bottom = 2 cm]{geometry} 
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Алгоритми теорії керування}
+\rhead{Нікіта Скибицький}
+\cfoot{\thepage}
+
+\usepackage{amsthm}
+\newtheorem{definition}{Визначення}
+\theoremstyle{definition}
+\newtheorem*{problem*}{\normalfont{\textit{Задача}}}
+\newtheorem{problem}{\normalfont{\textit{Задача}}}[section]
+\newtheorem{algorithm}{\tt Алгоритм}[section]
+\newtheorem*{solution}{Розв'язок}
+
+\allowdisplaybreaks
+\setlength\parindent{0pt}
+\numberwithin{equation}{section}
+
+\usepackage{graphicx}
+
+\newcommand{\JJ}{\mathcal{J}}
+\newcommand{\KK}{\mathcal{K}}
+\newcommand{\MM}{\mathcal{M}}
+\newcommand{\UU}{\mathcal{U}}
+\newcommand{\XX}{\mathcal{X}}
+\newcommand{\BB}{\mathcal{B}}
+\newcommand{\NN}{\mathcal{N}}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\EE}{\mathcal{E}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\Max}{\displaystyle\max\limits}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\renewcommand{\phi}{\varphi}
+\renewcommand{\SS}{\mathcal{S}}
+\renewcommand{\epsilon}{\varepsilon}
+
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\erfi}{erfi}
+\DeclareMathOperator{\signum}{sgn}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\begin{document}
+
+\section{Системи керування. Постановка задачі оптимального керування}
+
+\input{01-Algorithms.tex} \newpage
+
+\section{Елементи багатозначного аналізу. Множина досяжності}
+
+\input{02-Algorithms.tex} \newpage
+
+\section{Задача про переведення системи з точки в точку. Критерії керованості лінійної системи керування}
+
+\input{03-Algorithms.tex} \newpage
+
+\section{Критерії спостережуваності. Критерій двоїстості}
+
+\input{04-Algorithms.tex} \newpage
+
+\section{Задача фільтрації. Множинний підхід}
+
+\input{05-Algorithms.tex} \newpage
+
+\section{Варіаційний метод в задачі оптимального керування}
+
+\input{06-Algorithms.tex} \newpage
+
+\section{Принцип максимуму Понтрягіна для задачі з вільним правим кінцем}
+
+\input{07-Algorithms.tex} \newpage
+
+\section{Принцип максимуму Понтрягіна: загальний випадок}
+
+\input{08-Algorithms.tex} \newpage
+
+\section{Дискретний варіант методу динамічного програмування}
+
+\input{09-Algorithms.tex} \newpage
+
+\section{Метод динамічного програмування}
+
+\input{10-Algorithms.tex} \newpage
+
+\end{document}

@@ -1,0 +1,44 @@
+u:=1cm;
+
+% axes
+drawarrow (-u/2,0)--(2u,0);
+drawarrow (0,-u/2)--(0,2u);
+
+% z_1
+pair z_one;
+z_one:=(5u/4,u/4);
+label.rt(btex $z_1$ etex, z_one);
+draw (0,0)--z_one withcolor red;
+
+% z_2
+pair z_two;
+z_two:=(u/4,5u/4);
+label.top(btex $z_2$ etex, z_two);
+draw (0,0)--z_two withcolor red;
+
+% z_1 + z_2
+pair z_one_plus_z_two;
+z_one_plus_z_two:=z_one+z_two;
+draw (0,0)--z_one_plus_z_two withcolor green;
+label.urt(btex $z_1+z_2$ etex, z_one_plus_z_two);
+
+% z_1 -- z_1 + z_2;
+draw z_one--z_one_plus_z_two withcolor red;
+
+% z_2 -- z_1 + z_2;
+draw z_two--z_one_plus_z_two withcolor red;
+
+% z_1 -- z_2
+draw z_one--z_two withcolor green;
+
+% z_1
+draw z_one withpen pencircle scaled 2bp;
+
+% z_2
+draw z_two withpen pencircle scaled 2bp;
+
+% z_1 + z_2
+draw z_one_plus_z_two withpen pencircle scaled 2bp;
+
+% 0
+draw (0,0) withpen pencircle scaled 2bp;

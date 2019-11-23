@@ -1,0 +1,160 @@
+﻿% pdflatex ten-transcendental-problems.tex && del ten-transcendental-problems.aux, ten-transcendental-problems.out, ten-transcendental-problems.log && start ten-transcendental-problems.pdf
+
+\input{univ.sty}
+
+\numberwithin{equation}{section}
+
+\begin{document}
+
+\setcounter{section}{1}
+
+\setcounter{problem}{61}
+\begin{problem}
+	Знайти суми
+	\begin{enumerate}
+		\item $1 + \cos x + \cos 2x + \ldots + \cos nx$;
+		\item $\sin x + \sin 2x + \ldots + \sin nx$;
+		\item $\cos x + \cos 3x + \ldots + \cos (2n - 1) x$;
+		\item $\sin x + \sin 3x + \ldots + \sin (2n - 1) x$;
+		\item $\sin x - \sin 2x + \ldots + (-1)^{n-1} \sin nx$.
+	\end{enumerate}
+\end{problem}
+\begin{solution}
+	У кожному пункті цієї задачі використовується визначення $\sin$ і $\cos$ через $\exp$:
+	\begin{align}
+		\label{eq:1.1}
+		\sin z &= \frac{e^{iz} - e^{-iz}}{2i}, \\
+		\cos z &= \frac{e^{iz} + e^{-iz}}{2},
+	\end{align}
+	а також формула суми геометричної прогресії:
+	\begin{equation}
+		\label{eq:1.2}
+		a + a q + a q^2 + \ldots + a q^n = a \cdot \frac{q^{n + 1} - 1}{q - 1}.
+	\end{equation}
+
+	\begin{enumerate}
+		\item \begin{multline*}
+			1 + \cos x + \cos 2x + \ldots + \cos nx = \\
+			= 1 + \frac{e^{iz} + e^{-iz}}{2} + \frac{e^{i2z} + e^{-i2z}}{2} + \ldots + \frac{e^{inz} + e^{-inz}}{2} = \\
+			= \left( \frac{1}{2} + \frac{e^{i1z}}{2} + \frac{e^{i2z}}{2} + \ldots + \frac{e^{inz}}{2} \right) + \\
+			+ \left( \frac{1}{2} + \frac{e^{-i1z}}{2} + \frac{e^{-i2z}}{2} + \ldots + \frac{e^{-inz}}{2} \right) = \\
+			= \frac12 \cdot \frac{e^{i(n+1)z}-1}{e^{iz}-1} + \frac12 \cdot \frac{e^{-i(n+1)z}-1}{e^{-iz}-1}.
+		\end{multline*}
+		\item \begin{multline*}
+			\sin x + \sin 2x + \ldots + \sin nx = \\
+			= \frac{e^{iz} - e^{-iz}}{2i} + \frac{e^{i2z} - e^{-i2z}}{2i} + \ldots + \frac{e^{inz} - e^{-inz}}{2i} = \\
+			= \left( \frac{e^{i1z}}{2i} + \frac{e^{i2z}}{2i} + \ldots + \frac{e^{inz}}{2i} \right) - \\
+			- \left( \frac{e^{-i1z}}{2i} + \frac{e^{-i2z}}{2i} + \ldots + \frac{e^{-inz}}{2i} \right) = \\
+			= \frac{e^{iz}}{2i} \cdot \frac{e^{inz}-1}{e^{iz} - 1} - \frac{e^{-iz}}{2i} \cdot \frac{e^{-inz}-1}{e^{-iz}-1}.
+		\end{multline*}
+		\item \begin{multline*}
+			\cos x + \cos 3x + \ldots + \cos (2n - 1) x = \\
+			= \frac{e^{iz} + e^{-iz}}{2} + \frac{e^{i3z} + e^{-i3z}}{2} + \ldots + \frac{e^{i(2n-1)z} + e^{-i(2n-1)z}}{2} = \\
+			= \left( \frac{e^{i1z}}{2} + \frac{e^{i3z}}{2} + \ldots + \frac{e^{i(2n-1)z}}{2} \right) + \\
+			+ \left( \frac{e^{-i1z}}{2} + \frac{e^{-i3z}}{2} + \ldots + \frac{e^{-i(2n-1)z}}{2} \right) = \\
+			= \frac{e^{iz}}{2} \cdot \frac{e^{2inz}-1}{e^{2iz}-1} + \frac{e^{-iz}}{2} \cdot \frac{e^{-2inz}-1}{e^{-2iz}-1}.
+		\end{multline*}
+		\item \begin{multline*}
+			\sin x + \sin 3x + \ldots + \sin (2n - 1) x = \\
+			= \frac{e^{iz} - e^{-iz}}{2i} + \frac{e^{i3z} - e^{-i3z}}{2i} + \ldots + \frac{e^{i(2n-1)z} - e^{-i(2n-1)z}}{2i} = \\
+			= \left( \frac{e^{i1z}}{2i} + \frac{e^{i3z}}{2i} + \ldots + \frac{e^{i(2n-1)z}}{2i} \right) - \\
+			- \left( \frac{e^{-i1z}}{2i} + \frac{e^{-i3z}}{2i} + \ldots + \frac{e^{-i(2n-1)z}}{2i} \right) = \\
+			= \frac{e^{iz}}{2i} \cdot \frac{e^{2inz}-1}{e^{2iz}-1} - \frac{e^{-iz}}{2i} \cdot \frac{e^{-2inz}-1}{e^{-2iz}-1}.
+		\end{multline*}
+		\item \begin{multline*}
+			\sin x - \sin 2x + \ldots + (-1)^{n-1} \sin nx = \\
+			= \frac{e^{iz} - e^{-iz}}{2i} - \frac{e^{i2z} - e^{-i2z}}{2i} + \ldots + (-1)^{n-1} \frac{e^{inz} - e^{-inz}}{2i} = \\
+			= \left( \frac{e^{i1z}}{2i} - \frac{e^{i2z}}{2i} + \ldots + (-1)^{n-1} \cdot \frac{e^{inz}}{2i} \right) - \\
+			- \left( \frac{e^{-i1z}}{2i} - \frac{e^{-i2z}}{2i} + \ldots + (-1)^{n-1} \cdot \frac{e^{-inz}}{2i} \right) = \\
+			= \frac{e^{iz}}{2i} \cdot \frac{(-1)^n \cdot e^{inz}-1}{- e^{iz} - 1} - \frac{e^{-iz}}{2i} \cdot \frac{(-1)^n \cdot e^{-inz}-1}{-e^{-iz}-1}.
+		\end{multline*}
+	\end{enumerate}
+\end{solution}
+
+\setcounter{problem}{67}
+\begin{problem}
+	Знайти дійсні та уявні частини наступних значень функцій:
+	\begin{enumerate}
+		\item $\cos (2 + i)$;
+		\item $\sin 2 i$;
+		\item $\tan (2 - i)$;
+		\item $\cot \left( \frac\pi4 - i \ln 2 \right)$;
+		\item $\coth (2 + i)$;
+		\item $\tanh \left( \ln 3 + \frac{\pi i}4 \right)$.
+	\end{enumerate}
+\end{problem}
+\begin{solution}
+	У кожному пункті цієї задачі використовується визначення $\exp$:
+	\begin{equation}
+		\label{eq:1.3}
+		e^z = e^{x + iy} = e^x \cdot (\cos y + i \sin y),
+	\end{equation}
+	визначення дійсної та уявної частини:
+	\begin{equation}
+		\label{eq:1.4}
+		z = x + i y = \Real z + i \Imag z,
+	\end{equation}
+	а також інших тригонометричних та гіперболічних функцій через $\exp$.
+	\begin{enumerate}
+		\item \begin{multline*}
+			\cos (2 + i) = \frac{e^{i(2+i)}+e^{-i(2+i)}}{2} = \frac{e^{-1+2i}+e^{1-2i}}{2} = \\
+			= \frac{e^{-1+2i}}{2}+\frac{e^{1-2i}}{2} = \frac{e^{-1}(\cos 2 + i \sin 2)}{2} + \frac{e(\cos 2 - i \sin 2)}{2} = \\
+			= \frac{(e^{-1} + e)\cdot \cos 2}{2} + i \cdot \frac{(e^{-1} - e) \cdot \sin 2}{2}. 
+		\end{multline*}
+		\item \[\sin 2 i = \frac{e^{i(2i)}-e^{-i(2i)}}{2i} = \frac{e^{-2}-e^2}{2i} = \frac{e^{-2}}{2i}-\frac{e^2}{2i} = i \cdot \frac{e^2-e^{-2}}{2}. \]
+		\item \begin{multline*}
+			\tan (2 - i) = \frac{\sin (2 - i)}{\cos (2 - i)} = \frac{e^{i(2-i)}-e^{-i(2-i)}}{2i} / \frac{e^{i(2-i)}+e^{-i(2-i)}}{2} = \\
+			= \frac{e^{i(2-i)}-e^{-i(2-i)}}{2i} \cdot \frac{2}{e^{i(2-i)}+e^{-i(2-i)}} = \frac{e^{i(2-i)}-e^{-i(2-i)}}{i \cdot (e^{i(2-i)}+e^{-i(2-i)})} = \\
+			= \frac{e^{1+2i}-e^{-1-2i}}{i \cdot (e^{1+2i}+e^{-1-2i})} = \frac{e(\cos 2 + i \sin 2)-e^{-1} (\cos 2 - i \sin 2)}{i \cdot (e (\cos 2 + i \sin 2) + e^{-1} (\cos 2 - i \sin 2))} = \\
+			= \frac{(e - e^{-1}) \cdot \cos 2 + i (e + e^{-1}) \cdot \sin 2}{(e^{-1} - e) \cdot \sin 2 + i \cdot (e + e^{-1}) \cdot \cos 2}.
+		\end{multline*}
+		Ми залишаємо подальші обчислення цієї частки як вправу читачеві.
+		\item Як і наступні пункти.
+		\item 
+		\item 
+	\end{enumerate}
+\end{solution}
+
+\setcounter{problem}{70}
+\begin{problem}
+	Обчислити:
+	\begin{enumerate}
+		\item $\Ln 4$, $\Ln(-1)$, $\ln(-1)$;
+		\item $\Ln i$, $\ln i$;
+		\item $\Ln \frac{1 \pm i}{\sqrt{2}}$;
+		\item $\Ln(2 - 3i)$, $\Ln(-2+3i)$.
+	\end{enumerate}
+\end{problem}
+\begin{solution}
+	У кожному пункті цієї задачі використовується визначення $\Ln z$:
+	\begin{equation}
+		\label{eq:1.5}
+		\Ln z = \ln r + i \phi + 2 \pi i k, \quad k \in \mathbb{Z},
+	\end{equation}
+	де
+	\begin{equation}
+		\label{eq:1.6}
+		\ln z = \ln r + i \phi \quad (-\pi < \phi \le \phi)
+	\end{equation}
+	називається головним значенням величини $\Ln z$.
+	\begin{enumerate}
+		\item \begin{align*}
+			\Ln 4 &= \ln 4 + 2 \pi i k, \\
+			\Ln (-1) &= \ln 1 + i \pi + 2 \pi i k = i \pi + 2 \pi i k, \\
+			\ln (-1) &= \ln 1 + i \pi = i \pi.
+		\end{align*}
+		\item \begin{align*}
+			\Ln i &= \ln 1 + i \pi / 2 + 2 \pi i k = i \pi / 2 + 2 \pi i k, \\
+			\ln i &= \ln 1 + i \pi / 2 = i \pi / 2.
+		\end{align*}
+		\item \[ \Ln \frac {1 \pm i}{\sqrt 2} = \ln 1 \pm i \pi / 4 + 2 \pi i k = \pm i \pi / 4 + 2 \pi i k. \]
+		\item \begin{align*}
+			\Ln (2 - 3i) &= \ln \sqrt{13} + i \arctan_2 (-3, 2) + 2 \pi i k, \\
+			\Ln (- 2 + 3i) &= \ln \sqrt{13} + i \arctan_2 (3, -2) + 2 \pi i k.
+		\end{align*}
+		Тут функція $\arctan_2(y, x)$ визначається як \verb|atan2| у мові програмування \verb|C++|. 
+	\end{enumerate}
+\end{solution}
+
+
+\end{document}

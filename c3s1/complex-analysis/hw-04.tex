@@ -1,0 +1,324 @@
+\setcounter{section}{3}
+
+\section{Домашнє завдання за 9/20}
+
+\begin{problem}[Волковиський, 62]
+    Знайти суми
+    \begin{enumerate}
+        \item[3.] $\cos x + \cos 3x + \cdots + \cos (2n - 1) x$;
+        \item[4.] $\sin x + \sin 3x + \cdots + \sin (2n - 1) x$.
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    Скористаємося визначеннями функцій $\cos x = \dfrac{e^{ix} + e^{-ix}}{2}$ та $\sin x = \dfrac{e^{ix} - e^{-ix}}{2i}$:
+    \begin{enumerate}
+        \item[3.] 
+        \begin{align*}
+            & \cos x + \cos 3x + \cdots + \cos (2n - 1) x = \dfrac{e^{ix} + e^{-ix}}{2} + \dfrac{e^{i3x} + e^{-i3x}}{2} + \cdots + \dfrac{e^{i(2n-1)x} + e^{-i(2n-1)x}}{2} = \\
+            \\
+            &= \dfrac12 \left( e^{ix} + e^{i3x} + \cdots + e^{i(2n-1)x} \right) + \dfrac12 \left( e^{-ix} + e^{-i3x} + \cdots + e^{-i(2n-1)x} \right) = \\
+            \\
+            &= \dfrac{e^{ix}}2 \left( 1 + e^{2ix} + \cdots + e^{2(n-1)ix} \right) + \dfrac{e^{-ix}}2 \left( 1 + e^{-2ix} + \cdots + e^{-2(n-1)ix} \right) = \\
+            \\
+            &= \dfrac{e^{ix}}2 \cdot \dfrac{e^{2nix} - 1}{e^{2ix} - 1} + \dfrac{e^{-ix}}2 \cdot \dfrac{e^{-2nix} - 1}{e^{-2ix} - 1} = \\
+            \\
+            &= \dfrac{e^{ix}\left(e^{2nix} - 1\right)\left(e^{-2ix} - 1\right) + e^{-ix}\left(e^{-2nix} - 1\right)\left(e^{2ix} - 1\right)}{2(e^{2ix} - 1)(e^{-2ix} - 1)} = \\
+            \\
+            &= \dfrac{(e^{2nix} - 1)\cdot (e^{-ix} - e^{ix}) + (e^{-2nix} - 1)\cdot (e^{ix} - e^{-ix})}{2(e^{2ix} - 1)\cdot (e^{-2ix} - 1)} = \\
+            \\
+            &= \dfrac{(e^{-ix} - e^{ix})\cdot(e^{2nix} -e^{-2nix})}{2(e^{2ix} - 1)\cdot(e^{-2ix} - 1)} = \\
+            \\
+            &= \dfrac{(-2i\sin(x))\cdot(2i \sin(2nx))}{2(2 - e^{2ix} - e^{-2ix})} = \\
+            \\
+            &= \dfrac{\sin(x)\cdot\sin(2nx)}{1 - \cos (2x)} = \\
+            \\
+            &= \dfrac{\sin(2nx)}{2 \sin (x)}. \\
+        \end{align*}
+    
+        \item[4.] 
+        \begin{align*}
+            & \sin x + \sin 3x + \cdots + \sin (2n - 1) x = \dfrac{e^{ix} - e^{-ix}}{2i} + \dfrac{e^{i3x} - e^{-i3x}}{2i} + \cdots + \dfrac{e^{i(2n-1)x} - e^{-i(2n-1)x}}{2i} = \\
+            \\
+            &= \dfrac1{2i} \left( e^{ix} + e^{i3x} + \cdots + e^{i(2n-1)x} \right) - \dfrac1{2i} \left( e^{-ix} + e^{-i3x} + \cdots + e^{-i(2n-1)x} \right) = \\
+            \\
+            &= \dfrac{e^{ix}}{2i} \left( 1 + e^{2ix} + \cdots + e^{2(n-1)ix} \right) - \dfrac{e^{-ix}}{2i} \left( 1 + e^{-2ix} + \cdots + e^{-2(n-1)ix} \right) = \\
+            \\
+            &= \dfrac{e^{ix}}{2i} \cdot \dfrac{e^{2nix} - 1}{e^{2ix} - 1} - \dfrac{e^{-ix}}{2i} \cdot \dfrac{e^{-2nix} - 1}{e^{-2ix} - 1} = \\
+            \\
+            &= \dfrac{e^{ix}\left(e^{2nix} - 1\right)\left(e^{-2ix} - 1\right) - e^{-ix}\left(e^{-2nix} - 1\right)\left(e^{2ix} - 1\right)}{2i(e^{2ix} - 1)(e^{-2ix} - 1)} = \\
+            \\
+            &= \dfrac{(e^{2nix} - 1)\cdot (e^{-ix} - e^{ix}) - (e^{-2nix} - 1)\cdot (e^{ix} - e^{-ix})}{2i(e^{2ix} - 1)\cdot (e^{-2ix} - 1)} = \\
+            \\
+            &= \dfrac{(e^{-ix} - e^{ix})\cdot(e^{2nix} + e^{-2nix})}{2i(e^{2ix} - 1)\cdot(e^{-2ix} - 1)} = \\
+            \\
+            &= \dfrac{(-2i\sin(x))\cdot(2\cos(2nx))}{2i(2 - e^{2ix} - e^{-2ix})} = \\
+            \\
+            &= \dfrac{-\sin(x)\cdot\cos(2nx)}{1 - \cos (2x)} = \\
+            \\
+            &= -\dfrac{\cos(2nx)}{2 \sin (x)}. \\
+        \end{align*}
+    \end{enumerate}
+
+\end{solution}
+
+\begin{problem}[Волковиський, 65]
+    Доведіть, що якщо $\cos(z + \omega) = \cos z$ для довільного $z$ то $\omega = 2 \pi k$ ($k=0,\pm1,\pm2,\ldots$).
+\end{problem}
+
+\begin{solution}
+Користуючись визначеннями косинусу знаходимо $\dfrac{e^{i} + e^{-i}}{2} e^{z + \omega} = \cos(z + \omega) = \cos z = \dfrac{e^{i} + e^{-i}}{2} e^z$, звідки $e^{z+\omega} = e^z$, а далі $e^\omega = 1$, тобто $\omega = 2\pi i k$.
+\end{solution}
+
+\begin{problem}[Волковиський, 70]
+    Знайти всі значення $z$ для яких
+    \begin{enumerate}
+        \item $|\tan z| = 1$;
+        \item $|\tanh z| = 1$.
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}
+\item 
+\[
+|\tan z| = \left| \dfrac {\sin z} {\cos z} \right| = \left| \dfrac {\dfrac{e^{iz} - e^{-iz}}{2i}} {\dfrac{e^{iz} + e^{-iz}}{2}} \right| = \left| \dfrac {e^{iz} - e^{-iz}} {e^{iz} + e^{-iz}} \right| = 1 
+\]
+\begin{equation*}
+\begin{aligned}
+\left| \dfrac {e^{iz} - e^{-iz}} {e^{iz} + e^{-iz}} \right| = 1 &\Rightarrow |e^{iz} - e^{-iz}| = |e^{iz} + e^{-iz}| \Rightarrow \\
+&\Rightarrow e^{iz} \perp e^{-iz} \Rightarrow 2\Real(z) \equiv 0 \pmod {\pi / 2} \Rightarrow \Real(z) = \pi / 4 + k \pi / 2, k \in \ZZ.
+\end{aligned}
+\end{equation*}
+\item
+\[
+|\tanh z| = \left| \dfrac {\sinh z} {\cosh z} \right| = \left| \dfrac {\dfrac{e^{z} - e^{-z}}{2}} {\dfrac{e^{z} + e^{-z}}{2}} \right| = \left| \dfrac {e^{z} - e^{-z}} {e^{z} + e^{-z}} \right| = 1 
+\]
+\begin{equation*}
+\begin{aligned}
+\left| \dfrac {e^{z} - e^{-z}} {e^{z} + e^{-z}} \right| = 1 &\Rightarrow |e^{z} - e^{-z}| = |e^{z} + e^{-z}| \Rightarrow\\
+&\Rightarrow e^{z} \perp e^{-z} \Rightarrow 2\Imag(z) \equiv 0 \pmod {\pi / 2} \Rightarrow \Imag(z) = \pi / 4 + k \pi / 2, k \in \ZZ.
+\end{aligned}
+\end{equation*}
+
+\end{enumerate}
+\end{solution}
+
+\begin{problem}[Волковиський, 74.7]
+Знайти всі значення наступного степеню: 
+\[
+(3-4i)^{1+i}.
+\]
+\end{problem}
+
+\begin{solution}
+\begin{align*}
+    (3 - 4i) ^ {1 + i} &= \exp \{ (1 + i) \cdot \Ln (3 - 4 i) \} = \\
+    \\
+    \Ln (3 - 4 i) &= \ln | 3 - 4 i | + i \arg ( 3 - 4 i ) = \\
+    &= \ln | 3 - 4 i | + i \Arg ( 3 - 4 i ) + 2 \pi i k = \\
+    &= \ln 5 - i \arctan(4 / 3) + 2 \pi i k \\
+    \\
+    &= \exp \{ (1 + i) \cdot (\ln 5 - i \arctan(4 / 3) + 2 \pi i k) \} = \\
+    &= \exp \{ (\ln 5 + \arctan (4 / 3) - 2 \pi k) + i (\ln 5 - \arctan (4 / 3) + 2 \pi k) \} = \\
+    &= e^{\ln 5 + \arctan (4/3) - 2 \pi k} \cdot (\cos (\ln 5 - \arctan (4 / 3) + 2 \pi k) + i  \sin (\ln 5 - \arctan (4 / 3) + 2 \pi k)) = \\
+    &= 5 e^{\arctan (4/3) - 2 \pi k} \cdot (\cos (\ln 5 - \arctan (4 / 3)) + i \sin (\ln 5 - \arctan (4 / 3))).
+\end{align*}
+\end{solution}
+
+\begin{problem}[Волковиський, 64]
+    Виходячи з визначень відповідних функцій, доведіть:
+    \begin{enumerate}
+        \item[2.] $\sin (x) = \cos \left( \dfrac \pi 2 - z \right)$;
+        \item[6.] $\cosh(z_1 + z_2) = \cosh (z_1) \cdot \cosh (z_2) + \sinh (z_1) \cdot \sinh (z_2)$.
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+        \item[2.] 
+        Скористаємося визначеннями функцій $\cos z = \dfrac{e^{iz} + e^{-iz}} 2$, $\sin z = \dfrac{e^{iz} - e^{-iz}}{2}$:
+        \begin{align*}
+            \cos \left( \dfrac \pi 2 - z \right) &= \dfrac{\exp\left\{i\left(\dfrac \pi 2 - z\right)\right\} + \exp\left\{-i\left(\dfrac \pi 2 - z\right)\right\}}{2} = \dfrac{e^{iz}\cdot\exp\left\{-\dfrac {i\pi} 2\right\} + e^{-iz}\cdot\exp\left\{\dfrac {i\pi} 2\right\}}{2} = \\
+            \\
+            &= \dfrac{e^{iz}\left(\cos\left(-\dfrac\pi2\right)+i\cdot\sin\left(-\dfrac\pi2\right)\right) + e^{-iz}\left(\cos\left(\dfrac\pi2\right)+i\cdot\sin\left(\dfrac\pi2\right)\right)}{2} = \\
+            \\
+            &= \dfrac{-ie^{iz}+ie^{-iz}}{2} = \dfrac{ie^{iz}-ie^{-iz}}{2i} = \sin z. 
+        \end{align*}
+        \item[6.] Скористаємося визначеннями функцій $\cosh z = \dfrac{e^{z} + e^{-z}} 2$, $\sinh z = \dfrac{e^{z} - e^{-z}}{2}$:
+        \begin{align*}
+            & \cosh (z_1) \cdot \cosh(z_2) + \sinh (z_1) \cdot \sinh (z_2) = \dfrac {e^{z_1} + e^{-z_1}} 2 \cdot \dfrac {e^{z_2} + e^{-z_2}} 2 + \dfrac {e^{z_1} - e^{-z_1}} 2 \cdot \dfrac {e^{z_2} - e^{-z_2}} 2 = \\
+            \\
+            &= \dfrac {e^{z_1 + z_2} + e^{z_2 - z_1} + e^{z_1 - z_2} + e^{-z_1 - z_2}} 4 + \dfrac {e^{z_1 + z_2} - e^{z_2 - z_1} - e^{z_1 - z_2} + e^{-z_1 - z_2}} 4 = \\
+            \\
+            &= \dfrac{e^{z_1 + z_2} + e^{- z_1 - z_2}}{2} = \cosh(z_1 + z_2).
+        \end{align*}
+    \end{enumerate}
+
+\end{solution}
+
+\begin{problem}[Волковиський, 67]
+    Виразити через тригонометричні функції дійсного аргументу $\Real(\cdot)$, $\Imag(\cdot)$ та $\|\cdot\|$ від наступних функцій: 
+    \begin{enumerate}
+        \item $\sin z$;
+        \item $\cos z$;
+        \item $\tan z$.
+    \end{enumerate}
+
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+        \item 
+        Запишемо
+        \begin{align*}
+            \sin (x + iy) &= \dfrac{e^{i(x + iy)} - e^{-i(x + y)}}{2i} = \dfrac{e^{ix - y} - e^{y - ix}}{2i} = \\
+            \\
+            &= \dfrac{e^{-y} \cdot (\cos (x) + i \sin(x)) - e^{y}\cdot(\cos(-x) + i\sin(-x))}{2i} = \\
+            \\
+            &= \dfrac{e^{-y} \cdot (\cos (x) + i \sin(x)) - e^{y}\cdot(\cos(x) - i\sin(x))}{2i} = \\
+            \\
+            &= \dfrac{e^{-y} \cdot (i \cos (x) - \sin(x)) - e^{y}\cdot(i \cos(x) + \sin x)}{2} = \\
+            \\
+            &= \dfrac{\sin (x) (e^y + e^{-y})}{2} + \dfrac{i \cos (x) (e^y - e^{-y})}{2} = \\
+            \\
+            &= \sin (x) \cdot \cosh(y) + i \cos(x) \cdot \sinh(y)
+        \end{align*}
+        Звідси 
+        \begin{align*}
+            \Real(\sin(z)) &= \sin (x) \cdot \cosh(y) = \sin (\Real(z)) \cdot \cosh(\Imag(z)) \\
+            \\
+            \Imag(\sin(z)) &= \cos (x) \cdot \sinh(y) = \cos (\Real(z)) \cdot \sinh(\Imag(z)) \\
+            \\
+            \|\sin(z)\| &= \sqrt{(\sin(x) \cdot \cosh(y))^2 + (\cos(x) \cdot \sinh(y))^2} = \\
+            &= \sqrt{\sin^2(x) \cdot \cosh^2(y) + \cos^2(x) \cdot \sinh^2(y)} = \\
+            &= \sqrt{\sin^2(x) \cdot (1 + \sinh^2(y)) + (1 - \sin^2(x)) \cdot \sinh^2(y)} = \\
+            &= \sqrt{\sin^2(x) + \sinh^2(y))} = \sqrt{\sin^2(\Real(z)) + \sinh^2(\Imag(z))}.
+        \end{align*}
+        \item 
+        Запишемо
+        \begin{align*}
+            \cos (x + iy) &= \dfrac{e^{i(x + iy)} + e^{ix - y}}{2i} = \dfrac{e^{y - ix} + e^{-i(x + iy)}} 2 = \\
+            \\
+            &= \dfrac{e^{-y} \cdot (\cos (x) + i \sin(x)) + e^{y} \cdot ( \cos (-x) + i \sin (-x) ) } 2 = \\
+            \\
+            &= \dfrac{e^{-y} \cdot (\cos (x) + i \sin(x)) + e^{y} \cdot ( \cos (x) - i \sin (x) ) } 2 = \\
+            \\
+            &= \dfrac{\cos (x) (e^y + e^{-y})}{2} - \dfrac{i \sin (x) (e^y - e^{-y})} 2 = \\
+            \\
+            &= \cos (x) \cdot \cosh(y) - i \sin(x) \cdot \sinh(y)
+        \end{align*}
+        Звідси 
+        \begin{align*}
+            \Real(\cos(z)) &= \cos (x) \cdot \cosh(y) = \cos (\Real(z)) \cdot \cosh(\Imag(z)) \\
+            \\
+            \Imag(\cos(z)) &= - \sin (x) \cdot \sinh(y) = - \sin (\Real(z)) \cdot \sinh(\Imag(z)) \\
+            \\
+            \|\cos(z)\| &= \sqrt{(\cos(x) \cdot \cosh(y))^2 + (\sin(x) \cdot \sinh(y))^2} = \\
+            &= \sqrt{\cos^2(x) \cdot \cosh^2(y) + \sin^2(x) \cdot \sinh^2(y)} = \\
+            &= \sqrt{\cos^2(x) \cdot (1 + \sinh^2(y)) + (1 - \cos^2(x)) \cdot \sinh^2(y)} = \\
+            &= \sqrt{\cos^2(x) + \sinh^2(y))} = \sqrt{\cos^2(\Real(z)) + \sinh^2(\Imag(z))}.
+        \end{align*}
+        \item 
+        \begin{align*}
+            \tan (z) = \dfrac{\sin (z)}{\cos (z)} &= \dfrac{\Real(\sin(z)) \cdot \Real(\cos(z)) + \Imag(\sin(z)) \cdot \Imag(\cos(z))}{\|\cos z\|^2} + \\
+            \\
+            &+ i \cdot \dfrac{\Imag(\sin(z)) \cdot \Real(\cos(z)) - \Real(\sin(z)) \cdot \Imag(\cos(z))}{\|\cos z\|^2} = \\
+            \\
+            &= \dfrac{\sin (x) \cdot \cos (x) \cdot \cosh^2(y) - \sin (x) \cdot \cos (x) \cdot \sinh^2(y)}{\|\cos z\|^2} + \\
+            \\
+            &+ i \cdot \dfrac{\ \cos^2 (x) \cdot \sinh(y) \cdot \cosh(y) + \sin^2 (x) \cdot \sinh(y) \cdot \cosh(y)}{\|\cos z\|^2} =\\
+            \\
+            &= \dfrac{\sin (x) \cdot \cos (x)}{\|\cos z\|^2} + i \cdot \dfrac{\sinh (y) \cdot \cosh (y)}{\|\cos z\|^2} = \\
+            \\
+            &= \dfrac{\sin (x) \cdot \cos (x)}{\cos^2(x) + \sinh^2(y)} + i \cdot \dfrac{\sinh (y) \cdot \cosh (y)}{\cos^2(x) + \sinh^2(y)} 
+        \end{align*}
+        Звідси
+        \begin{align*}
+                \Real(\tan(z)) &= \dfrac{\sin (x) \cdot \cos (x)}{\cos^2(x) + \sinh^2(y)} = \dfrac{\sin (\Real(z)) \cdot \cos (\Real(z))}{\cos^2(\Real(z)) + \sinh^2(\Imag(z))} \\
+                \\
+                \Imag(\tan(z)) &= \dfrac{\sinh (y) \cdot \cosh (y)}{\cos^2(x) + \sinh^2(y)} = \dfrac{\sinh (\Imag(z)) \cdot \cosh (\Imag(z))}{\cos^2(\Real(z)) + \sinh^2(\Imag(z))}  \\
+                \\
+                \|\tan(z)\| &= \sqrt{\left(\dfrac{\sin (x) \cdot \cos (x)}{\cos^2(x) + \sinh^2(y)} \right)^2 + \left(\dfrac{\sinh (y) \cdot \cosh (y)}{\cos^2(x) + \sinh^2(y)}\right)^2} = \\
+                \\
+                &= \dfrac{\sqrt{\sin^2(x) \cdot \cos^2(x) + \sinh^2 (y) \cdot \cosh^2 (y)}}{\cos^2(x) + \sinh^2(y)} = \\
+                \\
+                &= \dfrac{\sqrt{\sin^2(\Real(z)) \cdot \cos^2(\Real(z)) + \sinh^2 (\Imag(z)) \cdot \cosh^2 (\Imag(z))}}{\cos^2(\Real(z)) + \sinh^2(\Imag(z))}
+            \end{align*}
+        Зауважимо, що отримані результати можна переписати трохи красивіше:
+        \begin{align*}
+                \tan(z) &= \dfrac{\sin(2x) + i \sinh(2y)}{\cos(2x) + \cosh(2y)} = \dfrac{\sin(2\Real(z)) + i \sinh(2\Imag(z))}{\cos(2\Real(z)) + \cosh(2\Imag(z))} \\
+                \\
+                \Real(\tan(z)) &= \dfrac{\sin(2x)}{\cos(2x) + \cosh(2y)} = \dfrac{\sin(2\Real(z))}{\cos(2\Real(z)) + \cosh(2\Imag(z))} \\
+                \\
+                \Imag(\tan(z)) &= \dfrac{\sinh(2y)}{\cos(2x) + \cosh(2y)} = \dfrac{\sinh(2\Imag(z))}{\cos(2\Real(z)) + \cosh(2\Imag(z))} \\
+                \\
+                \|\tan(z)\| &= \dfrac{\sqrt{\sin^2(2x) + \sinh^2(2y)}}{\cos(2x) + \cosh(2y)} = \dfrac{\sqrt{\sin^2(2\Real(z)) + \sinh^2(2\Imag(z))}}{\cos(2\Real(z)) + \cosh(2\Imag(z))}
+        \end{align*}
+    \end{enumerate}
+
+\end{solution}
+
+\begin{problem}[Волковиський, 73]
+    Початкове значення $\Imag(f(z))$ при $z = 2$ дорівнює нулеві. Точка $z$ робить повний оберт проти годинникової стрілки по колу з центром в початку координат і повертається в точку $z$. Вважаючи, що $f(z)$ при цьому змінювалося неперервно, визначіть значення $\Imag(f(z))$ після вказаного оберту, якщо
+    \begin{enumerate}
+        \item $f(z) = 2 \Ln(z)$;
+        \item $f(z) = \Ln\left(\dfrac1z\right)$;
+        \item $f(z) = \Ln(z) - \Ln(z + 1)$;
+        \item $f(z) = \Ln(z) + \Ln(z + 1)$.
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+        \item $4 \pi$, бо $z$ зробить один оберт проти годинникової стрілки, це $+2 \pi i$, а ще є множник $2$, тому $+4 \pi$ до $\Imag(z)$;
+        \item $-2 \pi$, бо $1 / z$ зробить один оберт за годинниковою стрілкою, це $-2\pi$ до $\Imag(z)$,;
+        \item $0$, бо і $z$ і $z + 1$ зроблять один оберт проти годинникової стрілки. Враховуючи множники $+1$ та $-1$, отримаємо $+2 \pi i$ та $-2 \pi i$, у сумі $0$ до $\Imag(z)$;
+        \item $4 \pi$, бо $z$ і $z + 1$ зроблять один оберт проти годинникової стрілки. Враховуючи множники $+1$ та $+1$, отримаємо $+2 \pi i$ та $+2 \pi i$, у сумі $+4 \pi$ до $\Imag(z)$.
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}[Волковиський, 77]
+Доведіть наступні рівності (для коренів беруться всі їхні значення):
+    \begin{enumerate}
+        \item $\Arccos (z) = - i \cdot \Ln(z + \sqrt{z^2 - 1})$;
+        \item $\Arcsin (z) = - i \cdot \Ln (i(z + \sqrt{z^2 - 1}))$;
+        \item $\Arctan (z) = \dfrac i2 \cdot \Ln \left(\dfrac {i + z}{i - z}\right) = \dfrac 1 {2i} \cdot \Ln \left(\dfrac{1 + iz}{1 - iz}\right)$;
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+        \item Покажемо, що косинус правої частини дорівнює $z$:
+        \begin{align*}
+            & \cos \left( -i \cdot \Ln \left( z + \sqrt{z^2 - 1} \right) \right) = \\
+            \\ 
+            &= \dfrac{e^{i \left( -i \cdot \Ln \left( z + \sqrt{z^2 - 1} \right) \right)} + e^{-i \left( -i \cdot \Ln \left( z + \sqrt{z^2 - 1} \right) \right)}}{2} = \dfrac{e^{\Ln \left( z + \sqrt{z^2 - 1} \right)} + e^{-\Ln \left( z + \sqrt{z^2 - 1} \right)}}{2} = \\
+            \\
+            &= \dfrac{\left(z + \sqrt{z^2 - 1} \right) + \left(z + \sqrt{z^2 - 1} \right)^{-1}}{2} = \dfrac{z^2 + 2z\sqrt{z^2 - 1} + (z^2 - 1) + 1}{2\left(z + \sqrt{z^2 - 1} \right)} = \\
+            \\
+            &= \dfrac{z^2 + 2z\sqrt{z^2 - 1} + z^2}{2\left(z + \sqrt{z^2 - 1} \right)} = \dfrac{2z^2 + 2z\sqrt{z^2 - 1}}{2\left(z + \sqrt{z^2 - 1} \right)} = \dfrac{z^2 + z\sqrt{z^2 - 1}}{z + \sqrt{z^2 - 1}} = \dfrac{z\left(z + \sqrt{z^2 - 1}\right)}{z + \sqrt{z^2 - 1}} = z.
+        \end{align*}
+        \item Покажемо, що синус правої частини дорівнює $z$:
+        \begin{align*}
+            & \sin \left( -i \cdot \Ln \left( i \cdot \left( z + \sqrt{z^2 - 1} \right) \right) \right) = \\
+            \\ 
+            &= \dfrac{e^{i \left( -i \cdot \Ln \left( i \cdot \left( z + \sqrt{z^2 - 1} \right) \right)\right)} - e^{-i \cdot \left( -i \cdot \Ln \left( i \cdot \left( z + \sqrt{z^2 - 1} \right) \right)\right)}}{2i} = \dfrac{e^{\Ln \left( i \cdot \left( z + \sqrt{z^2 - 1} \right)\right)} - e^{-\Ln \left(i \cdot \left( z + \sqrt{z^2 - 1} \right)\right)}}{2i} = \\
+            \\
+            &= \dfrac{i \cdot \left(z + \sqrt{z^2 - 1} \right) + i \cdot \left(z + \sqrt{z^2 - 1} \right)^{-1}}{2i} = \dfrac{z^2 + 2z\sqrt{z^2 - 1} + (z^2 - 1) + 1}{2\left(z + \sqrt{z^2 - 1} \right)} = \\
+            \\
+            &= \dfrac{2z^2 + 2z\sqrt{z^2 - 1}}{2\left(z + \sqrt{z^2 - 1} \right)} = \dfrac{z^2 + z\sqrt{z^2 - 1}}{z + \sqrt{z^2 - 1}} = \dfrac{z\left(z + \sqrt{z^2 - 1}\right)}{z + \sqrt{z^2 - 1}} = z.
+        \end{align*}
+        \item Покажемо, що тангенс правої частини дорівнює $z$:
+        \begin{align*}
+            & \tan \left( \dfrac i2 \cdot \Ln \left(\dfrac {i + z}{i - z}\right) \right) = \dfrac{\sin \left( \dfrac i2 \cdot \Ln \left(\dfrac {i + z}{i - z}\right) \right)}{\cos \left( \dfrac i2 \cdot \Ln \left(\dfrac {i + z}{i - z}\right) \right)} = \\
+            \\
+            &= \dfrac{\left(\exp\left\{ i\cdot \dfrac i2 \cdot \Ln \left(\dfrac {i + z}{i - z}\right) \right\} - \exp\left\{ -i \cdot \dfrac i2 \cdot \Ln \left(\dfrac {i + z}{i - z}\right) \right\}\right) \cdot 2}{2i \cdot \left(\exp\left\{ i\cdot \dfrac i2 \cdot \Ln \left(\dfrac {i + z}{i - z}\right) \right\} + \exp\left\{ -i\cdot \dfrac i2 \cdot \Ln \left(\dfrac {i + z}{i - z}\right) \right\}\right)} = \\
+            \\
+            &= \dfrac{\left(\dfrac {i + z}{i - z}\right)^{-1/2} - \left(\dfrac {i + z}{i - z}\right)^{1/2}}{i \cdot \left( \left(\dfrac {i + z}{i - z}\right)^{-1/2} + \left(\dfrac {i + z}{i - z}\right)^{1/2}\right)} = \dfrac{\sqrt{\dfrac {i - z}{i + z}} - \sqrt{\dfrac {i + z}{i - z}}}{i \cdot \left(\sqrt{\dfrac {i - z}{i + z}} + \sqrt{\dfrac {i + z}{i - z}}\right)} = \\
+            \\
+            &= \dfrac{(i - z) - (i + z)}{i \cdot ((i - z) + (i + z))} = \dfrac{-2 z}{i \cdot (2i)} = z.
+        \end{align*}
+    \end{enumerate}
+
+\end{solution}

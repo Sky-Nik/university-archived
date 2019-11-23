@@ -1,0 +1,116 @@
+\setcounter{section}{9}
+
+\section{Домашнє завдання за 10/25}
+
+\begin{problem}[Волковиський, 2.94]
+    Відобразити площину із розрізом по відрізку $[-i, i]$ на верхню півплощину.
+\end{problem}
+
+\begin{solution}
+    Відображення $z \mapsto z_1 = \dfrac{z + i}{2i}$ переводить площину з розрізом по відрізку $[-i, i]$ у площину з розрізом по відрізку $[0, 1]$. \\
+    
+    Відображення $z_1 \mapsto z_2 = \dfrac{z_1}{1 - z_1}$ переводить площину з розрізом по відрізку $[0, 1]$ у площину з розрізом по дійсному променю $[0, +\infty)$. \\
+    
+    Відображення $z_2 \mapsto w = \sqrt{z_2}$ переводить площину з розрізом по дійсному променю $[0,+\infty)$ у верхню півплощину. \\
+    
+    Поєднуючи, знаходимо $w = \sqrt{z_2} = \sqrt{\dfrac{z_1}{1 - z_1}} = \sqrt{\dfrac{\dfrac{z + i}{2i}}{1 - \dfrac{z + i}{2i}}} = \sqrt{\dfrac{z + i}{2i - (z + i)}} = \sqrt{\dfrac{z + i}{i - z}}.$
+\end{solution}
+
+\begin{problem}[Волковиський, 2.96]
+    Відобразити площину із розрізом по променям $(-\infty, -R]$, $[R, \infty)$ на верхню півплощину ($R > 0$).
+\end{problem}
+
+\begin{solution}
+    Відображення $z \mapsto z_1 = \dfrac{z + R}{2R}$ переводить площину із розрізом по променям $(-\infty, -R]$, $[R, \infty)$ у площину із розрізами по променям $(-\infty, 0]$, $[1, \infty)$. \\
+    
+    Відображення $z_1 \mapsto z_2 = \dfrac{z_1}{z_1 - 1}$ переводить площину із розрізами по променям $(-\infty, 0]$, $[1, \infty)$ у площину з розрізом по дійсному променю $[0, +\infty)$. \\
+    
+    Відображення $z_2 \mapsto w = \sqrt{z_2}$ переводить площину з розрізом по дійсному променю $[0,+\infty)$ у верхню півплощину. \\
+    
+    Поєднуючи, знаходимо $w = \sqrt{z_2} = \sqrt{\dfrac{z_1}{z_1 - 1}} = \sqrt{\dfrac{\dfrac{z + R}{2R}}{\dfrac{z + R}{2R} - 1}} = \sqrt{\dfrac{z + R}{(z + R) - 2R}} = \sqrt{\dfrac{z + R}{z - R}}$.
+\end{solution}
+
+\begin{problem}[Волковиський, 2.102]
+    Відобразити кут $0 < \arg z < \pi \beta$, де $0 < \beta < 2$, з розрізом по дузі кола $\|z\| = 1$ від точки $z = 1$ до точки $z = e^{i \alpha}$, де $0 < \alpha < \beta$.
+\end{problem}
+
+\begin{solution}
+    Відображення $z \mapsto z_1 = z^{1/\beta}$ переводить кут $0 < \arg z < \pi \beta$, де $0 < \beta < 2$, з розрізом по дузі кола $\|z\| = 1$ від точки $z = 1$ до точки $z = e^{i \alpha}$, де $0 < \alpha < \beta$ у верхню півплощину з розрізом по дузі кола $\|z\| = 1$ від точки $z = 1$ до точки $z = e^{i \alpha / \beta}$, де $0 < \alpha < \beta$. \\
+    
+    Відображення $z_1 \mapsto z_2 = \dfrac{z_1 - 1}{z_1 + 1}$ переводить верхню півплощину з розрізом по дузі кола $\|z\| = 1$ від точки $z = 1$ до точки $z = e^{i \alpha / \beta}$, де $0 < \alpha < \beta$ у верхню півплощину з розрізом по відрізку $\left[0, \dfrac{e^{i \alpha / \beta} - 1}{e^{i \alpha / \beta} + 1}\right]$. \\
+    
+    Відображення $z_2 \mapsto z_3 = z_2^2$ переводить верхню півплощину з розрізом по відрізку $\left[0, \dfrac{e^{i \alpha / \beta} - 1}{e^{i \alpha / \beta} + 1}\right]$ у площину з розрізом по дійсному променю $\left[\left(\dfrac{e^{i \alpha / \beta} - 1}{e^{i \alpha / \beta} + 1}\right)^2, +\infty\right)$. \\
+    
+    Відображення $z_3 \mapsto z_4 = z_3 - \left(\dfrac{e^{i \alpha / \beta} - 1}{e^{i \alpha / \beta} + 1}\right)^2$ переводить площину з розрізом по дійсному променю $\left[\left(\dfrac{e^{i \alpha / \beta} - 1}{e^{i \alpha / \beta} + 1}\right)^2, +\infty\right)$ у площину з розрізом по дійсному променю $[0, +\infty)$. \\
+    
+    Відображення $z_4 \mapsto w = \sqrt{z_4}$ переводить площину з розрізом по дійсному променю $[0,+\infty)$ у верхню півплощину. \\
+    
+    Поєднуючи, знаходимо 
+    \begin{align*}
+        w &= \sqrt{z_4} = \sqrt{z_3 - \left(\dfrac{e^{i \alpha / \beta} - 1}{e^{i \alpha / \beta} + 1}\right)^2} = \sqrt{z_2^2 - \left(\dfrac{e^{i \alpha / \beta} - 1}{e^{i \alpha / \beta} + 1}\right)^2} = \\
+        \\
+        &= \sqrt{\left( \dfrac{z_1 - 1}{z_1 + 1}\right)^2 - \left(\dfrac{e^{i \alpha / \beta} - 1}{e^{i \alpha / \beta} + 1}\right)^2} = \sqrt{\left( \dfrac{z^{1/\beta} - 1}{z^{1/\beta} + 1}\right)^2 - \left(\dfrac{e^{i \alpha / \beta} - 1}{e^{i \alpha / \beta} + 1}\right)^2} \overset{?}{=} \\
+        \\
+        &\overset{?}{=} \sqrt{\left( \dfrac{z^{1/\beta} - 1}{z^{1/\beta} + 1}\right)^2 + \tan^2 \left(\dfrac{\alpha}{2\beta}\right)}.
+    \end{align*}
+\end{solution}
+
+\begin{problem}[Волковиський, 2.103]
+    Відобразити зовнішність одиничного верхнього півкруга з розрізом по відрізку $[0,-i]$ на верхню півплощину.
+\end{problem}
+
+\begin{solution}
+    Нічого воно не зводиться до попередньої задачі, не видумуйте.
+\end{solution}
+
+\begin{problem}[Волковиський, 2.107]
+    Знайти області на які функція Жуковського відображає:
+    \begin{enumerate}
+        \item [1.] круг $\|z\| < R < 1$;
+        \item [3.] круг $\|z\| < 1$;
+        \item [5.] півплощину $\Imag z > 0$;
+        \item [7.] півкруг $\|z\|<1$, $\Imag z > 0$.
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    Всі пункти розв'язані з використанням принципу збереження границь:
+    \begin{enumerate}
+        \item [1.] зовнішність еліпса із фокусами у точках $\pm1$ і півосями $\dfrac12\left(\dfrac1R\pm R\right)$;
+        \item [3.] площина з розрізом по відрізку $[-1, 1]$;
+        \item [5.] площина із розрізами по променям $(-\infty, -1]$ та $[1, \infty)$;
+        \item [7.] нижня півплощина.
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}[Волковиський, 2.109.2]
+    Використовуючи функцію Жуковського, відобразити зовнішність еліпса $\dfrac{x^2}{a^2} + \dfrac{y^2}{b^2} = 1$ на зовнішність одиничного кола так, щоб $w(\infty) = \infty$, $\arg w'(\infty) = 0$.
+\end{problem}
+
+\begin{solution}
+    Бажане перетворення здійснює трохи модифікована обернена функція Жуковського, $z \mapsto w = \dfrac{1}{a+b}\left(z + \sqrt{z^2 - (a^2 - b^2)}\right)$, якщо $a$ -- більша піввісь.
+\end{solution}
+
+\begin{problem}[Волковиський, 2.112]
+    Знайти область на яку функція Жуковського відображає круг $\|z\| < 1$ з розрізом по відрізку $[a, 1]$, ($-1 < a < 1$). Розглянути випадки $a > 0$ і $a < 0$.
+\end{problem}
+
+\begin{solution}
+    Застосовуючи принцип збереження границь, знаходимо, що границею шуканої області буде $\left[-1, \dfrac12 \left(a + \dfrac1a\right)\right]$ якщо $a > 0$ і $\left(\infty, \dfrac12\left(\dfrac1a + a\right)\right] \cup \left[-1, +\infty\right)$ якщо $a < 0$. \\
+    
+    Залишається лише зауважити, що власне внутрішність круга перейде у всю площину за виключенням вищезгаданих множин.
+\end{solution}
+
+\begin{problem}[Волковиський, 2.114]
+    Відобразити круг $\|z\| < 1$ із розрізами по радіусу $[-1, 0]$ і відрізку $[a, 1]$ ($0 < a < 1$) на верхню півплощину.
+\end{problem}
+
+\begin{solution}
+    Відображення $z \mapsto z_1 = \dfrac12 \left(z + \dfrac1z\right)$ відображає круг $\|z\| < 1$ із розрізами по радіусу $[-1, 0]$ і відрізку $[a, 1]$ ($0 < a < 1$) на площину із розрізом по дійсному променю $\left(-\infty, \dfrac12\left(a + \dfrac1a\right)\right]$. \\
+    
+    Відображення $z_1 \mapsto z_2 = \dfrac12\left(a + \dfrac1a\right) - z_1$ відображає площину із розрізом по дійсному променю $\left(-\infty, \dfrac12\left(a + \dfrac1a\right)\right]$ на площину із розрізом по дійсному променю $[0, \infty)$. \\
+    
+    Відображення $z_2 \mapsto w = \sqrt{z_2}$ переводить площину з розрізом по дійсному променю $[0,+\infty)$ у верхню півплощину. \\
+    
+    Поєднуючи, знаходимо $w = \sqrt{z_2} = \sqrt{\dfrac12\left(a + \dfrac1a\right) - z_1} = \sqrt{\dfrac12\left(a + \dfrac1a\right) - \dfrac12 \left(z + \dfrac1z\right)}$.
+\end{solution}

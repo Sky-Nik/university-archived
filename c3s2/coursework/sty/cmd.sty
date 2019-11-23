@@ -1,0 +1,55 @@
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\rfrac[2]{{}^{#1}\!/_{\!#2}}
+
+\DeclareMathOperator{\argmin}{argmin}
+\DeclareMathOperator*{\Argmin}{argmin}
+\DeclareMathOperator*{\Inf}{inf}
+\DeclareMathOperator*{\Sup}{sup}
+\DeclareMathOperator*{\Lim}{lim}
+\DeclareMathOperator*{\Sum}{\sum}
+\DeclareMathOperator*{\Int}{\int}
+\DeclareMathOperator{\epigraph}{epi}
+\DeclareMathOperator{\prox}{prox}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\domain}{dom}
+\DeclareMathOperator{\trace}{tr}
+
+\makeatletter
+\renewcommand*{\p@section}{\S\,}
+\makeatother
+
+\renewcommand{\appendixtocname}{Додаток}
+\renewcommand{\appendixpagename}{Додаток}
+\renewcommand{\appendixname}{Додаток}
+\makeatletter
+\let\oriAlph\Alph
+\let\orialph\alph
+\renewcommand{\@resets@pp}{\par
+  \@ppsavesec
+  \stepcounter{@pps}
+  \setcounter{section}{0}%
+  \if@chapter@pp
+    \setcounter{chapter}{0}%
+    \renewcommand\@chapapp{\appendixname}%
+    \renewcommand\thechapter{\@Alph\c@chapter}%
+  \else
+    \setcounter{subsection}{0}%
+    \renewcommand\thesection{\@Alph\c@section}%
+  \fi
+  \if@pphyper
+    \if@chapter@pp
+      \renewcommand{\theHchapter}{\theH@pps.\oriAlph{chapter}}%
+    \else
+      \renewcommand{\theHsection}{\theH@pps.\oriAlph{section}}%
+    \fi
+    \def\Hy@chapapp{appendix}%
+  \fi
+  \restoreapp
+}
+\makeatother
