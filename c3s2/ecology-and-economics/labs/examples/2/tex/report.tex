@@ -1,0 +1,209 @@
+% cd ..\..\Users\NikitaSkybytskyi\Desktop\eco\examples\2\tex
+% cls && pdflatex report.tex && cls && pdflatex report.tex && del report.aux, report.toc, report.log, report.out && start report.pdf
+\input{../../report.sty}
+
+\begin{document}
+
+\cover{2}{Модель Лотки-Вольтерра. \\ Внутрішньо-видова конкуренція}
+
+\tableofcontents
+
+\section{Модель Лотки-Вольтерра}
+
+\subsection{Теоретичні відомості}
+
+Пригадаємо, що модель Лотки-Вольтерра описується наступною системою диференціальних рівнянь:
+\begin{equation}
+	\left\{
+		\begin{aligned}
+			\dot x &= x \cdot (a - b \cdot y), \\
+			\dot y &= y \cdot (d \cdot x - c),
+		\end{aligned}
+	\right.
+\end{equation}
+де $a$ --- коефіцієнт розмноження жертв за відсутності хижаків, $c$ --- коефіцієнт природної загибелі хижаків, $b$ --- інтенсивність зменшення жертв при взаємодії двох популяці, $d$ --- інтенсивність нарощування біомаси хижаків при цьому. \medskip
+
+Поклавши $\dot x = \dot y = 0$ знаходимо дві стаціонарні точки: 
+\begin{itemize}
+	\item тривіальне сідло $(x, y) = (0, 0)$;
+	\item нетривіальний центр $(x, y) = \left(\frac{c}{d}, \frac{a}{b}\right)$.
+\end{itemize}
+
+Також відомо, що загальний інтеграл системи має вигляд
+\begin{equation}
+	V = d \cdot x - c \cdot \ln x + b \cdot y - a \cdot \ln y,
+\end{equation}
+де $V$ --- певна константа, яка визначається початковими умовами.
+
+\subsection{Чисельне моделювання}
+
+Було використано мову програмування \texttt{Python} і модуль \texttt{matplotlib.pyplot}.
+
+\subsubsection{Код для фазового портрету}
+
+\inputminted{python}{2/py/phase.py}
+% \inputminted{python}{../py/phase.py}
+
+\subsubsection{Фазовий портрет}
+\vspace{-2em}
+\begin{minipage}[t]{.5\textwidth}
+	\begin{figure}[H]
+		\centering
+		\caption{На квадраті $[0, 1] \times [0, 1]$}
+		\includegraphics[width=\textwidth]{{phase_0.01_1.00_0.01_1.00_50}.png}
+	\end{figure}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+	\begin{figure}[H]
+		\centering
+		\caption{В околі стаціонарної точки}
+		\includegraphics[width=\textwidth]{{phase_0.57_0.77_0.30_0.50_50}.png}
+	\end{figure}
+\end{minipage}
+
+\textit{Якщо погано видно, то можна розтягнути на весь екран, вихідні зображення гарної якості.} \medskip
+
+Як бачимо, отримані результати відповідають теоретичним очікуванням.
+
+\subsubsection{Код для 2D і 3D графіків розв'язків}
+
+Лістинг коду програми для побудови 2D і 3D графіків розв'язків:
+\inputminted{python}{2/py/plots.py}
+% \inputminted{python}{../py/plots.py}
+
+\newpage
+
+\subsubsection{Розв'язок у 2D}
+
+\begin{figure}[H]
+	\centering
+	\caption{$x(0) < y(0)$}
+	\includegraphics[width=\textwidth]{{plot_2d_0.40_0.60}.png}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\caption{$x(0) > y(0)$}
+	\includegraphics[width=\textwidth]{{plot_2d_0.80_0.20}.png}
+\end{figure}
+
+Як бачимо, отримані результати відповідають теоретичним очікуванням.
+
+\newpage
+	
+\subsubsection{Розв'язок у 3D}
+
+\begin{minipage}[t]{.5\textwidth}
+	\begin{figure}[H]
+		\centering
+		\caption{$x(0) < y(0)$}
+		\includegraphics[width=\textwidth]{{plot_3d_0.40_0.60}.png}
+	\end{figure}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+	\begin{figure}[H]
+		\centering
+		\caption{$x(0) > y(0)$}
+		\includegraphics[width=\textwidth]{{plot_3d_0.80_0.20}.png}
+	\end{figure}
+\end{minipage}
+
+Як бачимо, отримані результати відповідають теоретичним очікуванням.
+
+\section{Внутрішньо-видова конкуренція}
+
+\subsection{Теоретичні відомості}
+
+Пригадаємо, що модель Лотки---Вольтерра яка враховує внутрішньо-видову конкуренцію описується наступною системою диференціальних рівнянь:
+\begin{equation}
+	\left\{
+		\begin{aligned}
+			\dot x &= x \cdot (a - b \cdot y - e \cdot x), \\
+			\dot y &= y \cdot (d \cdot x - c),
+		\end{aligned}
+	\right.
+\end{equation}
+де $a$ --- коефіцієнт розмноження жертв за відсутності хижаків, $c$ --- коефіцієнт природної загибелі хижаків, $b$ --- інтенсивність зменшення жертв при взаємодії двох популяці, $d$ --- інтенсивність нарощування біомаси хижаків при цьому, і, нарешті, $e$ --- коефіцієнт внутрішньо-видової взаємодії серед жертв. \medskip
+
+Поклавши $\dot x = \dot y = 0$ знаходимо три стаціонарні точки: 
+\begin{itemize}
+	\item тривіальне сідло $(x, y) = (0, 0)$;
+	\item напів-тривіальний стік (eng. \textit{sink}) $(x, y) = \left( \dfrac{a}{e}, 0 \right)$;
+	\item нетривіальний спіральний стік $(x, y) = \left(\dfrac{c}{d}, \dfrac{a \cdot d - c \cdot e}{b \cdot d}\right)$.
+\end{itemize}
+
+\newpage
+
+\subsection{Чисельне моделювання}
+
+Було використано мову програмування \texttt{Python} і модуль \texttt{matplotlib.pyplot}.
+
+\subsubsection{Код для фазового портрету}
+
+Ми не наводимо лістинг коду програми для побудови фазового портрету, оскільки у коді нічого окрім визначення функцій-похідних, визначення стаціонарної точки, і назв файлів у які зберігаються графіки не змінилося.
+
+\subsubsection{Фазовий портрет}
+\vspace{-2em}
+\begin{minipage}[t]{.5\textwidth}
+	\begin{figure}[H]
+		\centering
+		\caption{На квадраті $[0, 1] \times [0, 1]$}
+		\includegraphics[width=\textwidth]{{phase_0.01_1.00_0.01_1.00_50_2}.png}
+	\end{figure}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+	\begin{figure}[H]
+		\centering
+		\caption{В околі стаціонарної точки}
+		\includegraphics[width=\textwidth]{{phase_0.57_0.77_0.03_0.23_50_2}.png}
+	\end{figure}
+\end{minipage}
+
+\textit{Якщо погано видно, то можна розтягнути на весь екран, вихідні зображення гарної якості.} \medskip
+
+Як бачимо, отримані результати відповідають теоретичним очікуванням.
+
+\subsubsection{Код для 2D і 3D графіків розв'язків}
+
+Ми не наводимо лістинг коду програми для побудови 2D і 3D графіків, оскільки у коді нічого окрім визначення функцій-похідних, визначення стаціонарної точки, і назв файлів у які зберігаються графіки не змінилося. \medskip
+
+Зауважимо, що для чисельного інтегрування системи диференціальних рівнянь було використано класичний метод Рунге-Кутти четвертого порядку, адже загальний інтеграл цієї системи невідомий (принаймні мені). 
+
+\subsubsection{Розв'язок у 2D}
+
+\begin{figure}[H]
+	\centering
+	\caption{$x(0) < y(0)$}
+	\includegraphics[width=\textwidth]{{plot_2d_0.10_0.90_2}.png}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\caption{$x(0) > y(0)$}
+	\includegraphics[width=\textwidth]{{plot_2d_0.90_0.10_2}.png}
+\end{figure}
+
+Як бачимо, отримані результати відповідають теоретичним очікуванням.
+
+\newpage
+	
+\subsubsection{Розв'язок у 3D}
+
+\begin{minipage}[t]{.5\textwidth}
+\begin{figure}[H]
+	\centering
+	\caption{$x(0) < y(0)$}
+	\includegraphics[width=\textwidth]{{plot_3d_0.10_0.90_2}.png}
+\end{figure}
+\end{minipage}
+\begin{minipage}[t]{.5\textwidth}
+\begin{figure}[H]
+	\centering
+	\caption{$x(0) > y(0)$}
+	\includegraphics[width=\textwidth]{{plot_3d_0.90_0.10_2}.png}
+\end{figure}
+\end{minipage}
+
+Як бачимо, отримані результати відповідають теоретичним очікуванням.
+
+\end{document}

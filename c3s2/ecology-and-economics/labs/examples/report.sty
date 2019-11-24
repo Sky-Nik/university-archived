@@ -1,0 +1,51 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,ukrainian]{babel}
+\usepackage{amsmath, amssymb}
+
+\usepackage[top = 2 cm, left = 1 cm, right = 1 cm, bottom = 2 cm]{geometry}
+
+\usepackage{float, graphicx}
+
+\usepackage{minted}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\setlength\parindent{0pt}
+\allowdisplaybreaks
+
+\newcommand{\cover}[2]{
+	\begin{center}
+	\hfill \break
+		Міністерство освіти та науки України \\
+		Київський національний університет імені Тараса Шевченка \\ 
+		Факультет комп'ютерних наук та кібернетики \\
+		Кафедра обчислювальної математики
+	\end{center}
+
+	\vfill 
+
+	\begin{center}
+		\large{
+			Звіт до лабораторної роботи №{#1} на тему: \\ 
+			``{#2}''
+		}
+	\end{center}
+
+	\vfill 
+
+	\begin{flushright}
+		Виконав студент групи ОМ-3 \\
+		Скибицький Нікіта
+	\end{flushright}
+
+	\vfill 
+
+	\begin{center}
+	    Київ, 2019
+	\end{center}
+
+	\thispagestyle{empty} 
+	\newpage
+}
